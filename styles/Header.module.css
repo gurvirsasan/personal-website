@@ -1,0 +1,93 @@
+.header {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: fit-content;
+  min-width: 200px;
+  background: rgba(var(--header-bg), 0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(var(--header-bg), 0.2);
+  border-radius: 9999px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 6px rgba(var(--header-bg), 0.2);
+  animation: slideDown 0.5s ease-out;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 0.25rem;
+  flex-wrap: nowrap;
+}
+
+.navLink {
+  background: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: rgb(var(--header-text));
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 9999px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.8;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.navLink::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navLink:hover {
+  opacity: 1;
+}
+
+.navLink:hover::before {
+  transform: translateX(0);
+}
+
+.navLink.active {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+  font-weight: 500;
+}
+
+@keyframes slideDown {
+  from {
+    transform: translate(-50%, -100%);
+    opacity: 0;
+  }
+  to {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    top: 0.5rem;
+    width: 95%;
+    max-width: 400px;
+  }
+
+  .nav {
+    gap: 0.15rem;
+  }
+
+  .navLink {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+} 

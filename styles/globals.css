@@ -7,20 +7,24 @@
 
   /* Light theme variables */
   --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
+  --background-rgb: 248, 250, 252;
   --card-bg: 255, 255, 255;
-  --card-border: 229, 231, 235;
-  --text-primary: 17, 24, 39;
-  --text-secondary: 107, 114, 128;
+  --card-border: 226, 232, 240;
+  --text-primary: 15, 23, 42;
+  --text-secondary: 100, 116, 139;
+  --header-bg: 51, 65, 85;
+  --header-text: 255, 255, 255;
 }
 
 [data-theme='dark'] {
   --foreground-rgb: 255, 255, 255;
-  --background-rgb: 17, 24, 39;
-  --card-bg: 31, 41, 55;
-  --card-border: 75, 85, 99;
-  --text-primary: 243, 244, 246;
-  --text-secondary: 156, 163, 175;
+  --background-rgb: 15, 23, 42;
+  --card-bg: 30, 41, 59;
+  --card-border: 51, 65, 85;
+  --text-primary: 241, 245, 249;
+  --text-secondary: 148, 163, 184;
+  --header-bg: 51, 65, 85;
+  --header-text: 255, 255, 255;
 }
 
 * {
