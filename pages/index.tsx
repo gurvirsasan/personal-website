@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import styles from '../styles/Home.module.css';
 import ThemeToggle from '../components/ThemeToggle';
 import Header from '../components/Header';
+import HomeSection from '../components/sections/Home/HomeSection';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -10,19 +11,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Welcome to My Website</title>
+        <title>Gurvir Portfolio</title>
         <meta name="description" content="My personal website" />
       </Head>
       <Header />
       <ThemeToggle />
       
       <main className={styles.main}>
-        <section id="home" className={styles.section}>
-          <div className={styles.container}>
-            <h1 className={styles.title}>Welcome to My Website</h1>
-            <p className={styles.description}>Your content goes here</p>
-          </div>
-        </section>
+        <HomeSection/>
 
         <section id="about" className={styles.section}>
           <div className={styles.container}>
