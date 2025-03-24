@@ -4,6 +4,11 @@ import styles from '../styles/Home.module.css';
 import ThemeToggle from '../components/ThemeToggle';
 import Header from '../components/Header';
 import HomeSection from '../components/sections/Home/HomeSection';
+import AboutSection from '../components/sections/About/AboutSection';
+import ProjectsSection from '../components/sections/Projects/ProjectsSection';
+import SkillsSection from '../components/sections/Skills/SkillsSection';
+import ExperienceSection from '../components/sections/Experience/ExperienceSection';
+import ContactSection from '../components/sections/Contact/ContactSection';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -11,49 +16,19 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Gurvir Portfolio</title>
+        <title>Welcome to My Website</title>
         <meta name="description" content="My personal website" />
       </Head>
       <Header />
       <ThemeToggle />
       
       <main className={styles.main}>
-        <HomeSection/>
-
-        <section id="about" className={styles.section}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>About Me</h2>
-            <p className={styles.description}>Tell your story here</p>
-          </div>
-        </section>
-
-        <section id="projects" className={styles.section}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Projects</h2>
-            <p className={styles.description}>Showcase your work here</p>
-          </div>
-        </section>
-
-        <section id="skills" className={styles.section}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Skills</h2>
-            <p className={styles.description}>List your skills here</p>
-          </div>
-        </section>
-
-        <section id="experience" className={styles.section}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Experience</h2>
-            <p className={styles.description}>Share your experience here</p>
-          </div>
-        </section>
-
-        <section id="contact" className={styles.section}>
-          <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>Contact</h2>
-            <p className={styles.description}>Get in touch here</p>
-          </div>
-        </section>
+        <HomeSection />
+        <AboutSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <ContactSection />
       </main>
     </>
   );
