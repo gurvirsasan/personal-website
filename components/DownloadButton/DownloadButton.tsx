@@ -1,11 +1,28 @@
+import { useState } from 'react';
 import styles from './DownloadButton.module.css';
 
 export default function DownloadButton() {
+  const [hasClicked, setHasClicked] = useState(false);
+
+  const handleClick = () => {
+    if (!hasClicked) {
+      // First click - redirect to YouTube
+      setHasClicked(true);
+      window.open('https://www.youtube.com/watch?v=xvFZjo5PgG0', '_blank');
+    } else {
+      // Second click - download resume
+      const link = document.createElement('a');
+      link.href = '/Gurvir Sasan Resume.pdf';
+      link.download = 'Gurvir Sasan Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
+
   return (
-    <a
-      href="https://www.youtube.com/watch?v=xvFZjo5PgG0"
-      target="_blank"
-      rel="noopener noreferrer"
+    <button
+      onClick={handleClick}
       className={styles.downloadButton}
     >
       <svg
@@ -24,7 +41,7 @@ export default function DownloadButton() {
           d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
         />
       </svg>
-      Download Resume
-    </a>
+      {hasClicked ? 'but seriously, download resume' : 'Download Resume'}
+    </button>
   );
 } 

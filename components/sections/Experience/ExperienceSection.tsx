@@ -28,7 +28,7 @@ export default function ExperienceSection() {
     },
     {
       year: 2023,
-      company: 'UofT',
+      company: 'UofT - UTAP Project',
       logo: '/uoft.png',
       role: 'Software Developer',
       duration: 'Sept 2023 - Dec 2023'

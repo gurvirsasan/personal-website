@@ -20,14 +20,15 @@ export default function SectionCard({
       id={id}
       className={styles.section}
       style={{
-        height: isTallSection ? 'calc(250vh - 100px)' : '100vh',
-        minHeight: isTallSection ? 'calc(250vh - 100px)' : '100vh',
+        height: isTallSection ? 'auto' : '100vh',
+        minHeight: '100vh',
         width: '100vw',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
         paddingTop: isFirstSection ? '8rem' : '4rem',
-        marginBottom: '2rem',
+        paddingBottom: '4rem',
+        marginBottom: '0',
         opacity: '1',
       }}
     >
@@ -36,7 +37,7 @@ export default function SectionCard({
         style={{
           width: '100%',
           maxWidth: '2000px',
-          height: id === 'experience' ? '90%' : '100%',
+          height: isTallSection ? 'auto' : '100%',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',

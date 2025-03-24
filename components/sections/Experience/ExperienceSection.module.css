@@ -132,12 +132,12 @@
 
 .role {
   font-size: 1.1rem;
-  color: rgb(147, 51, 234);
+  color: rgb(var(--text-primary));
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-shadow: 0 2px 4px rgba(147, 51, 234, 0.1);
+  text-shadow: 0 2px 4px rgba(var(--text-primary), 0.1);
 }
 
 .duration {
