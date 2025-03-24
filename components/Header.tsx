@@ -7,13 +7,14 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ['home', 'about', 'projects', 'skills', 'experience', 'contact'];
-      const scrollPosition = window.scrollY + 100;
+      const viewportHeight = window.innerHeight;
+      const viewportMiddle = viewportHeight / 2;
 
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const { top, bottom } = element.getBoundingClientRect();
-          if (top <= 100 && bottom >= 100) {
+          if (top <= viewportMiddle && bottom >= viewportMiddle) {
             setActiveSection(section);
             break;
           }
@@ -28,7 +29,13 @@ export default function Header() {
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+      const elementTop = element.getBoundingClientRect().top + window.scrollY;
+      const scrollPosition = elementTop - 30;
+      
+      window.scrollTo({
+        top: scrollPosition,
+        behavior: 'smooth'
+      });
     }
   };
 
