@@ -53,7 +53,7 @@ export default function Header() {
           className={`${styles.navLink} ${activeSection === 'about' ? styles.active : ''}`}
           onClick={() => scrollToSection('about')}
         >
-          About
+          Education
         </button>
         <button
           className={`${styles.navLink} ${activeSection === 'experience' ? styles.active : ''}`}

@@ -5,6 +5,7 @@ interface SectionCardProps {
   children: React.ReactNode;
   id: string;
   isFirstSection?: boolean;
+  isTallSection?: boolean;
 }
 
 export default function SectionCard({
@@ -12,15 +13,16 @@ export default function SectionCard({
   children,
   id,
   isFirstSection = false,
+  isTallSection = false,
 }: SectionCardProps) {
   return (
     <section
       id={id}
       className={styles.section}
       style={{
-        height: '100vh',
-        minHeight: '100vh',
-        minWidth: '90vw',
+        height: isTallSection ? 'calc(250vh - 100px)' : '100vh',
+        minHeight: isTallSection ? 'calc(250vh - 100px)' : '100vh',
+        width: '100vw',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -33,12 +35,14 @@ export default function SectionCard({
         className={styles.container}
         style={{
           width: '100%',
-          maxWidth: '1400px',
-          height: '100%',
+          maxWidth: '2000px',
+          height: id === 'experience' ? '90%' : '100%',
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center',
+          alignItems: 'center',
+          justifyContent: isFirstSection ? 'center' : 'flex-start',
           marginTop: '-4rem',
+          padding: '0 2rem',
         }}
       >
         {title && <h2 className={styles.sectionTitle}>{title}</h2>}

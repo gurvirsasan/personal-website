@@ -1,0 +1,254 @@
+.timeline {
+  position: relative;
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background: rgb(var(--text-primary));
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.timelineItem {
+  position: relative;
+  width: 1000px;
+  margin-bottom: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.timelineContent {
+  width: 45%;
+  padding: 25px 40px;
+  background: rgba(var(--card-bg), 0.5);
+  border: 1px solid rgba(var(--card-border), 0.2);
+  border-radius: 20px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.timelineItem:nth-child(odd) .timelineContent {
+  margin-right: 55%;
+  margin-left: 0;
+  padding: 25px 40px 25px 25px;
+  text-align: right;
+}
+
+.timelineItem:nth-child(even) .timelineContent {
+  margin-left: 55%;
+  margin-right: 0;
+  padding: 25px 25px 25px 40px;
+  text-align: left;
+}
+
+.timelineContent:hover {
+  transform: translateY(-5px);
+}
+
+.year {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgb(var(--text-primary));
+  margin-bottom: 1.5rem;
+  opacity: 1;
+  position: relative;
+  z-index: 2;
+  margin-top: -0.5rem;
+}
+
+.timelineItem:nth-child(odd) .year {
+  margin-left: 0;
+  margin-right: -15px;
+  text-align: right;
+}
+
+.timelineItem:nth-child(even) .year {
+  margin-right: 0;
+  margin-left: -15px;
+  text-align: left;
+}
+
+.companyInfo {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.timelineItem:nth-child(odd) .companyInfo {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.timelineItem:nth-child(even) .companyInfo {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.companyLogo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: contain;
+  background-color: white;
+  padding: 0.5rem;
+  box-shadow: 0 4px 12px rgba(var(--text-primary), 0.15), 0 2px 4px rgba(var(--text-primary), 0.1);
+  flex-shrink: 0;
+}
+
+.companyDetails {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  max-width: 300px;
+}
+
+.timelineItem:nth-child(odd) .companyDetails {
+  align-items: flex-end;
+}
+
+.timelineItem:nth-child(even) .companyDetails {
+  align-items: flex-start;
+}
+
+.companyDetails h3 {
+  font-size: 1.3rem;
+  color: rgb(59, 130, 246);
+  margin: 0;
+  margin-bottom: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 2px 4px rgba(59, 130, 246, 0.1);
+}
+
+.role {
+  font-size: 1.1rem;
+  color: rgb(147, 51, 234);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 0 2px 4px rgba(147, 51, 234, 0.1);
+}
+
+.duration {
+  font-size: 0.9rem;
+  color: rgb(var(--text-secondary));
+  margin: 0;
+  opacity: 0.8;
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  border-radius: 1rem;
+  margin-top: 0.5rem;
+  color: rgb(59, 130, 246);
+  font-weight: 500;
+}
+
+.timelineItem::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: rgb(var(--text-primary));
+  border: 4px solid rgb(var(--card-bg));
+  border-radius: 50%;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .timeline::after {
+    left: 31px;
+  }
+
+  .timelineItem {
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .timelineContent {
+    width: calc(100% - 70px);
+    margin-left: 70px !important;
+    margin-right: 0 !important;
+    padding: 20px 20px 20px 25px;
+    text-align: left;
+  }
+
+  .year {
+    font-size: 1.3rem;
+    margin-bottom: 1.25rem;
+    margin-left: -5px;
+    text-align: left;
+    margin-top: 0;
+  }
+
+  .timelineItem:nth-child(odd) .year {
+    margin-right: 0;
+    text-align: left;
+  }
+
+  .companyInfo {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    justify-content: flex-start;
+  }
+
+  .timelineItem:nth-child(odd) .companyInfo,
+  .timelineItem:nth-child(even) .companyInfo {
+    flex-direction: row;
+  }
+
+  .companyLogo {
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+    box-shadow: 0 3px 8px rgba(var(--text-primary), 0.15), 0 2px 4px rgba(var(--text-primary), 0.1);
+  }
+
+  .companyDetails h3 {
+    font-size: 1.2rem;
+  }
+
+  .role {
+    font-size: 1rem;
+  }
+
+  .timelineItem::after {
+    left: 15px;
+    transform: none;
+  }
+
+  .companyInfo {
+    gap: 1rem;
+  }
+
+  .companyDetails {
+    max-width: none;
+    align-items: flex-start;
+  }
+
+  .duration {
+    font-size: 0.85rem;
+    padding: 0.2rem 0.6rem;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.2);
+    color: rgb(59, 130, 246);
+    margin-top: 0.5rem;
+  }
+} 

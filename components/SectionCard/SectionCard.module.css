@@ -64,6 +64,7 @@
   margin-bottom: 1rem;
   color: rgb(var(--text-primary));
   animation: fadeIn 0.6s ease-out forwards;
+  padding-top: 4rem;
 }
 
 .description {
@@ -113,6 +114,7 @@
 
   .sectionTitle {
     font-size: 1.5rem;
+    padding-top: 3rem;
   }
 
   .description {
