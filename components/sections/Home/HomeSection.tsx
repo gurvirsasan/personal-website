@@ -5,7 +5,7 @@ import { FaLinkedin, FaGithub } from 'react-icons/fa';
 
 export default function HomeSection() {
   return (
-    <SectionCard id="home" isFirstSection={true}>
+    <SectionCard id="home" isFirstSection={true} hasGradient={true} noBackground={true}>
       <div className={styles.homeContent}>
         <div className={styles.profileContainer}>
           <div className={styles.thoughtBubble}>

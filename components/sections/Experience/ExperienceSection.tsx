@@ -64,7 +64,7 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <SectionCard id="experience" title="Experience" isTallSection={true}>
+    <SectionCard id="experience" title="Experience" isTallSection={true} noBackground={true}>
       <div className={styles.timeline}>
         {experiences.reverse().map((exp, index) => (
           <div key={`${exp.year}-${exp.company}-${index}`} className={styles.timelineItem}>

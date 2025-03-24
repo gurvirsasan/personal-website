@@ -4,7 +4,7 @@ import styles from './AboutSection.module.css';
 
 export default function AboutSection() {
   return (
-    <SectionCard id="about" title="Education">
+    <SectionCard id="education" title="Education">
       <div className={styles.aboutContent}>
         <div className={styles.education}>
           <Image

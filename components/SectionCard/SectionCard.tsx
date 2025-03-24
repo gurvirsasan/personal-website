@@ -6,6 +6,8 @@ interface SectionCardProps {
   id: string;
   isFirstSection?: boolean;
   isTallSection?: boolean;
+  hasGradient?: boolean;
+  noBackground?: boolean;
 }
 
 export default function SectionCard({
@@ -14,6 +16,8 @@ export default function SectionCard({
   id,
   isFirstSection = false,
   isTallSection = false,
+  hasGradient = false,
+  noBackground = false,
 }: SectionCardProps) {
   return (
     <section
@@ -33,7 +37,7 @@ export default function SectionCard({
       }}
     >
       <div
-        className={styles.container}
+        className={`${styles.container} ${hasGradient ? styles.gradientContainer : ''} ${noBackground ? styles.noBackground : ''}`}
         style={{
           width: '100%',
           maxWidth: '2000px',
