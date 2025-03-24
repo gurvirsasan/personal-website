@@ -8,7 +8,7 @@ export default function HomeSection() {
       <div className={styles.homeContent}>
         <div className={styles.profileContainer}>
           <div className={styles.thoughtBubble}>
-            Hello 👋, I'm Gurvir!
+          <p>Hello 👋, I&apos;m Gurvir!</p>
           </div>
           <div className={styles.secondBubble}>
             Software Engineer
