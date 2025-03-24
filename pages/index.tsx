@@ -7,6 +7,7 @@ import ProjectsSection from '../components/sections/Projects/ProjectsSection';
 import SkillsSection from '../components/sections/Skills/SkillsSection';
 import ExperienceSection from '../components/sections/Experience/ExperienceSection';
 import ContactSection from '../components/sections/Contact/ContactSection';
+import DownloadButton from '../components/DownloadButton/DownloadButton';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
       </Head>
       <Background />
       <Header />
+      <DownloadButton />
       <main>
         <HomeSection />
         <AboutSection />
