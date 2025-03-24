@@ -22,41 +22,6 @@ export default function HomeSection() {
             className={styles.profileImage}
             priority
           />
-          <Image
-            src="/apple.png"
-            alt="Apple Logo"
-            width={80}
-            height={80}
-            className={`${styles.companyLogo} ${styles.logo1}`}
-          />
-          <Image
-            src="/jana.jpeg"
-            alt="Jana Logo"
-            width={80}
-            height={80}
-            className={`${styles.companyLogo} ${styles.logo2}`}
-          />
-          <Image
-            src="/nojumi logo.jpeg"
-            alt="Nojumi Logo"
-            width={80}
-            height={80}
-            className={`${styles.companyLogo} ${styles.logo3}`}
-          />
-          <Image
-            src="/rogers.png"
-            alt="Rogers Logo"
-            width={80}
-            height={80}
-            className={`${styles.companyLogo} ${styles.logo4}`}
-          />
-          <Image
-            src="/relay.jpg"
-            alt="Relay Logo"
-            width={80}
-            height={80}
-            className={`${styles.companyLogo} ${styles.logo5}`}
-          />
         </div>
         <div className={styles.socialLinks}>
           <a
