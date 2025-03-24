@@ -30,7 +30,8 @@ export default function Header() {
     const element = document.getElementById(sectionId);
     if (element) {
       const elementTop = element.getBoundingClientRect().top + window.scrollY;
-      const scrollPosition = elementTop - 30;
+      const offset = 50;
+      const scrollPosition = elementTop - offset;
       
       window.scrollTo({
         top: scrollPosition,
