@@ -1,8 +1,6 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
-import styles from '../styles/Home.module.css';
-import ThemeToggle from '../components/ThemeToggle';
 import Header from '../components/Header';
+import Background from '../components/Background';
 import HomeSection from '../components/sections/Home/HomeSection';
 import AboutSection from '../components/sections/About/AboutSection';
 import ProjectsSection from '../components/sections/Projects/ProjectsSection';
@@ -10,24 +8,23 @@ import SkillsSection from '../components/sections/Skills/SkillsSection';
 import ExperienceSection from '../components/sections/Experience/ExperienceSection';
 import ContactSection from '../components/sections/Contact/ContactSection';
 
-const inter = Inter({ subsets: ['latin'] });
-
 export default function Home() {
   return (
     <>
       <Head>
-        <title>Welcome to My Website</title>
-        <meta name="description" content="My personal website" />
+        <title>Gurvir Sasan</title>
+        <meta name="description" content="Personal website of Gurvir Sasan" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Background />
       <Header />
-      <ThemeToggle />
-      
-      <main className={styles.main}>
+      <main>
         <HomeSection />
         <AboutSection />
-        <ProjectsSection />
-        <SkillsSection />
         <ExperienceSection />
+        <SkillsSection />
+        <ProjectsSection />
         <ContactSection />
       </main>
     </>

@@ -1,0 +1,157 @@
+.profileContainer {
+  position: relative;
+  margin: 2rem auto;
+  width: 500px;
+  height: 500px;
+}
+
+.profileContainer::before {
+  content: '';
+  position: absolute;
+  top: -35px;
+  left: -35px;
+  width: 570px;
+  height: 570px;
+  border-radius: 50%;
+  border: 15px solid rgb(var(--accent-primary));
+  background-color: rgba(var(--accent-primary), 0.05);
+  z-index: -1;
+}
+
+.profileImage {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.thoughtBubble {
+  position: absolute;
+  top: -70px;
+  left: -120px;
+  background: white;
+  padding: 15px 25px;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-size: 1.5rem;
+  animation: float 1.5s ease-in-out infinite;
+}
+
+.secondBubble {
+  composes: thoughtBubble;
+  top: -50px;
+  left: auto;
+  right: -120px;
+  animation: float 1.5s ease-in-out 0.75s infinite;
+}
+
+.thoughtBubble::after, .secondBubble::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  right: 40px;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.thoughtBubble::before, .secondBubble::before {
+  content: '';
+  position: absolute;
+  bottom: -20px;
+  right: 60px;
+  width: 10px;
+  height: 10px;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.homeContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+.introText {
+  text-align: center;
+}
+
+.introText h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: rgb(var(--text-primary));
+  animation: fadeIn 0.15s ease-out forwards;
+}
+
+.introText h2 {
+  font-size: 2.5rem;
+  color: rgb(var(--text-primary));
+  animation: fadeIn 0.15s ease-out 0.05s forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.companyLogo {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 3px solid white;
+  background-color: white;
+  transition: transform 0.3s ease;
+}
+
+.companyLogo:hover {
+  transform: scale(1.1);
+}
+
+.logo1 { /* Apple - ~270 degrees (bottom) */
+  bottom: -70px;
+  left: 200px;
+}
+
+.logo2 { /* Jana - ~277 degrees */
+  bottom: -60px;
+  left: 100px;
+}
+
+.logo3 { /* Nojumi - ~285 degrees */
+  bottom: -25px;
+  left: 0px;
+}
+
+.logo4 { /* Rogers - ~300 degrees */
+  bottom: 50px;
+  left: -60px;
+}
+
+.logo5 { /* Relay - ~315 degrees */
+  bottom: 120px;
+  left: -100px;
+} 

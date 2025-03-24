@@ -6,7 +6,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'about', 'projects', 'skills', 'experience', 'contact'];
+      const sections = ['home', 'about', 'experience', 'skills', 'projects', 'contact'];
       const viewportHeight = window.innerHeight;
       const viewportMiddle = viewportHeight / 2;
 
@@ -55,10 +55,10 @@ export default function Header() {
           About
         </button>
         <button
-          className={`${styles.navLink} ${activeSection === 'projects' ? styles.active : ''}`}
-          onClick={() => scrollToSection('projects')}
+          className={`${styles.navLink} ${activeSection === 'experience' ? styles.active : ''}`}
+          onClick={() => scrollToSection('experience')}
         >
-          Projects
+          Experience
         </button>
         <button
           className={`${styles.navLink} ${activeSection === 'skills' ? styles.active : ''}`}
@@ -67,10 +67,10 @@ export default function Header() {
           Skills
         </button>
         <button
-          className={`${styles.navLink} ${activeSection === 'experience' ? styles.active : ''}`}
-          onClick={() => scrollToSection('experience')}
+          className={`${styles.navLink} ${activeSection === 'projects' ? styles.active : ''}`}
+          onClick={() => scrollToSection('projects')}
         >
-          Experience
+          Projects
         </button>
         <button
           className={`${styles.navLink} ${activeSection === 'contact' ? styles.active : ''}`}
@@ -81,4 +81,4 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+} 

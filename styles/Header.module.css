@@ -6,12 +6,12 @@
   z-index: 1000;
   width: fit-content;
   min-width: 200px;
-  background: rgba(var(--header-bg), 0.8);
+  background: rgba(255, 255, 255, 0.8);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(var(--header-bg), 0.2);
   border-radius: 9999px;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 0.5rem;
   box-shadow: 0 4px 6px rgba(var(--header-bg), 0.2);
   animation: slideDown 0.5s ease-out;
 }
@@ -27,7 +27,7 @@
   background: none;
   border: none;
   padding: 0.5rem 1rem;
-  color: rgb(var(--header-text));
+  color: #000;
   font-size: 0.9rem;
   cursor: pointer;
   border-radius: 9999px;
@@ -60,8 +60,10 @@
 
 .navLink.active {
   opacity: 1;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(147, 112, 219, 0.2);
   font-weight: 500;
+  transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  transform: translateX(0);
 }
 
 @keyframes slideDown {
@@ -90,4 +92,96 @@
     padding: 0.4rem 0.8rem;
     font-size: 0.8rem;
   }
+}
+
+.pill {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: #e0e0e0;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.activePill {
+  background-color: #333;
+  color: #fff;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(0, 0) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(30px, -50px) scale(1.2) rotate(90deg);
+  }
+  50% {
+    transform: translate(60px, 0) scale(0.8) rotate(180deg);
+  }
+  75% {
+    transform: translate(30px, 50px) scale(1.1) rotate(270deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+  }
+}
+
+.circle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  filter: blur(1px);
+}
+
+.circle1 {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, rgba(147, 112, 219, 0.5), rgba(138, 43, 226, 0.2));
+  top: 20%;
+  left: 10%;
+  animation: bounce 8s infinite alternate;
+}
+
+.circle2 {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.3), rgba(147, 112, 219, 0.1));
+  top: 50%;
+  left: 30%;
+  animation: float 6s infinite alternate-reverse;
+}
+
+.circle3 {
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, rgba(147, 112, 219, 0.4), rgba(186, 85, 211, 0.2));
+  top: 70%;
+  left: 70%;
+  animation: bounce 7s infinite alternate-reverse;
+}
+
+.circle4 {
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, rgba(186, 85, 211, 0.3), rgba(147, 112, 219, 0.1));
+  top: 30%;
+  left: 60%;
+  animation: float 9s infinite alternate;
+}
+
+.circle5 {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.4), rgba(186, 85, 211, 0.2));
+  top: 80%;
+  left: 20%;
+  animation: bounce 10s infinite alternate;
 } 

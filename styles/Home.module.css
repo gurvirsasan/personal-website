@@ -35,7 +35,7 @@
   max-width: 1200px;
   text-align: center;
   padding: 2rem;
-  background: rgb(var(--card-bg));
+  background: rgba(var(--card-bg), 0.9);
   border: 1px solid rgb(var(--card-border));
   border-radius: var(--border-radius);
   box-shadow: 0 4px 6px rgba(var(--text-primary), 0.1);
@@ -77,18 +77,16 @@
 
 @keyframes fadeInUp {
   from {
-    opacity: 0;
     transform: translateY(20px);
   }
   to {
-    opacity: 1;
     transform: translateY(0);
   }
 }
 
 @keyframes fadeIn {
   from {
-    opacity: 0;
+    opacity: 0.8;
   }
   to {
     opacity: 1;
@@ -120,4 +118,8 @@
   .description {
     font-size: 1rem;
   }
+}
+
+.profileImage, .homeContent, .introText, .introText h1, .introText h2 {
+  display: none;
 } 
