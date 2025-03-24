@@ -16,17 +16,19 @@
   --text-secondary: 100, 116, 139;
   --header-bg: 51, 65, 85;
   --header-text: 255, 255, 255;
+  --accent-primary: 147, 112, 219;
 }
 
 [data-theme='dark'] {
   --foreground-rgb: 255, 255, 255;
-  --background-rgb: 15, 23, 42;
-  --card-bg: 30, 41, 59;
-  --card-border: 51, 65, 85;
+  --background-rgb: 17, 24, 39;
+  --card-bg: 31, 41, 55;
+  --card-border: 55, 65, 81;
   --text-primary: 241, 245, 249;
-  --text-secondary: 148, 163, 184;
-  --header-bg: 51, 65, 85;
+  --text-secondary: 156, 163, 175;
+  --header-bg: 31, 41, 55;
   --header-text: 255, 255, 255;
+  --accent-primary: 167, 139, 250;
 }
 
 * {
@@ -41,7 +43,6 @@ body {
   max-width: 100vw;
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
-  font-family: var(--font-family);
 }
 
 body {

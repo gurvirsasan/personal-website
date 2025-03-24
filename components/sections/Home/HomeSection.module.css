@@ -5,25 +5,12 @@
   height: 500px;
 }
 
-.profileContainer::before {
-  content: '';
-  position: absolute;
-  top: -35px;
-  left: -35px;
-  width: 570px;
-  height: 570px;
-  border-radius: 50%;
-  border: 15px solid rgb(var(--accent-primary));
-  background-color: rgba(var(--accent-primary), 0.05);
-  z-index: -1;
-}
-
 .profileImage {
   width: 500px;
   height: 500px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(var(--text-primary), 0.1);
 }
 
 .thoughtBubble {
@@ -33,7 +20,7 @@
   background: white;
   padding: 15px 25px;
   border-radius: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(var(--text-primary), 0.1);
   font-size: 1.5rem;
   animation: float 1.5s ease-in-out infinite;
 }
@@ -55,7 +42,7 @@
   height: 20px;
   background: white;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(var(--text-primary), 0.1);
 }
 
 .thoughtBubble::before, .secondBubble::before {
@@ -67,7 +54,7 @@
   height: 10px;
   background: white;
   border-radius: 50%;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(var(--text-primary), 0.1);
 }
 
 @keyframes float {
@@ -121,7 +108,7 @@
   height: 90px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(var(--text-primary), 0.1);
   border: 3px solid white;
   background-color: white;
   transition: transform 0.3s ease;

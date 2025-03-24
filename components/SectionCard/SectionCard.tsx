@@ -1,4 +1,4 @@
-import styles from '../styles/Home.module.css';
+import styles from './SectionCard.module.css';
 
 interface SectionCardProps {
   title?: string;

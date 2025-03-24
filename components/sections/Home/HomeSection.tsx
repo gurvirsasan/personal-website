@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import styles from './HomeSection.module.css';
-import SectionCard from '../../SectionCard';
+import SectionCard from '../../SectionCard/SectionCard';
 
 export default function HomeSection() {
   return (

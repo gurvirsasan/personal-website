@@ -1,4 +1,4 @@
-import SectionCard from '../../SectionCard';
+import SectionCard from '../../SectionCard/SectionCard';
 
 export default function ExperienceSection() {
   return (

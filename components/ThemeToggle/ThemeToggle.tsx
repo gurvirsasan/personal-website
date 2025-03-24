@@ -1,26 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useTheme } from '../../context/ThemeContext';
+import styles from './ThemeToggle.module.css';
 
-const ThemeToggle = () => {
-  const [theme, setTheme] = useState('light');
-
-  useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') || 
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-    setTheme(savedTheme);
-    document.documentElement.setAttribute('data-theme', savedTheme);
-  }, []);
-
-  const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    document.documentElement.setAttribute('data-theme', newTheme);
-    localStorage.setItem('theme', newTheme);
-  };
+export default function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <button
       onClick={toggleTheme}
-      className="fixed bottom-6 right-6 z-[100] p-3 rounded-full bg-[rgb(var(--card-bg))] border border-[rgb(var(--card-border))] shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+      className={styles.themeToggle}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       {theme === 'light' ? (
@@ -30,7 +17,7 @@ const ThemeToggle = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 text-gray-800"
+          className={styles.icon}
         >
           <path
             strokeLinecap="round"
@@ -45,7 +32,7 @@ const ThemeToggle = () => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-6 h-6 text-gray-200"
+          className={styles.icon}
         >
           <path
             strokeLinecap="round"
@@ -56,6 +43,4 @@ const ThemeToggle = () => {
       )}
     </button>
   );
-};
-
-export default ThemeToggle; 
+} 
