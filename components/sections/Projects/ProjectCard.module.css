@@ -7,6 +7,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  min-width: 200px;
 }
 
 .projectCard:hover {
@@ -17,7 +18,7 @@
 .imageContainer {
   position: relative;
   width: 100%;
-  height: 250px;
+  height: 200px;
   overflow: hidden;
 }
 
@@ -102,4 +103,41 @@
   color: rgb(var(--text-secondary));
   margin: 0;
   line-height: 1.5;
+}
+
+@media (max-width: 1400px) {
+  .imageContainer {
+    height: 180px;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .imageContainer {
+    height: 160px;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.1rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+
+  .tag {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.6rem;
+  }
 } 

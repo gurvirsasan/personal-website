@@ -43,7 +43,7 @@ const technologies = [
 
 export default function SkillsSection() {
   return (
-    <SectionCard id="skills" title="Skills">
+    <SectionCard id="skills" title="Skills" isTallSection={true}>
       <div className={styles.skillsContainer}>
         <div className={styles.skillsSection}>
           <h3 className={styles.sectionTitle}>Languages</h3>

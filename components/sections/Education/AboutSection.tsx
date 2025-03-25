@@ -4,7 +4,7 @@ import styles from './AboutSection.module.css';
 
 export default function AboutSection() {
   return (
-    <SectionCard id="education" title="Education">
+    <SectionCard id="education" title="Education" isTallSection={true}>
       <div className={styles.aboutContent}>
         <div className={styles.education}>
           <Image
@@ -31,7 +31,7 @@ export default function AboutSection() {
               <span className={styles.star}>⭐</span> Dean's List Scholar <span className={styles.year}>2020-2021</span>
             </p>
             <p className={styles.achievement}>
-              <span className={styles.star}>⭐</span> Google Developer Student Club <span className={styles.year}>Community Project Engineering Lead</span>
+              <span className={styles.star}>⭐</span> Google Developer Student Club
             </p>
           </div>
         </div>

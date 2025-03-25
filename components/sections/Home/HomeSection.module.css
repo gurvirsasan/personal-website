@@ -3,6 +3,7 @@
   margin: 2rem auto;
   width: 500px;
   height: 500px;
+  margin-bottom: 1rem;
 }
 
 .profileImage {
@@ -10,7 +11,8 @@
   height: 500px;
   border-radius: 50%;
   object-fit: cover;
-  box-shadow: 0 4px 8px rgba(var(--text-primary), 0.1);
+  border: 4px solid rgba(var(--text-primary), 0.1);
+  box-shadow: 0 0 30px rgba(var(--text-primary), 0.1);
 }
 
 .thoughtBubble {
@@ -18,10 +20,10 @@
   top: -70px;
   left: -120px;
   background: rgba(255, 255, 255, 0.95);
-  padding: 15px 25px;
+  padding: 20px 30px;
   border-radius: 20px;
   box-shadow: 0 2px 4px rgba(var(--text-primary), 0.1);
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   animation: float 1.5s ease-in-out infinite;
   color: rgb(17, 24, 39); /* Dark gray, almost black */
 }
@@ -32,6 +34,7 @@
   left: auto;
   right: -120px;
   animation: float 1.5s ease-in-out 0.75s infinite;
+  font-size: 1.6rem;
 }
 
 .thoughtBubble::after, .secondBubble::after {
@@ -72,11 +75,13 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  min-height: 500px;
+  padding-top: 50px;
   gap: 2rem;
-  width: 100%;
   position: relative;
-  min-height: 600px;
-  padding-top: 150px;
+  width: 100%;
+  max-width: 2000px;
+  margin: 0 auto;
 }
 
 .introText {
@@ -108,9 +113,8 @@
 
 .socialLinks {
   display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin-top: 2rem;
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .socialButton {
@@ -142,10 +146,36 @@
   font-size: 1.2rem;
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
+  .homeContent {
+    min-height: 500px;
+    padding-top: 50px;
+    gap: 1.5rem;
+  }
+
+  .profileContainer {
+    width: 350px;
+    height: 350px;
+    margin-bottom: 0.5rem;
+  }
+
+  .profileImage {
+    width: 350px;
+    height: 350px;
+  }
+
+  .thoughtBubble {
+    font-size: 1.2rem;
+    padding: 15px 25px;
+  }
+
+  .secondBubble {
+    font-size: 1.1rem;
+  }
+
   .socialLinks {
-    flex-direction: column;
-    align-items: center;
+    gap: 1rem;
+    margin-top: 0.5rem;
   }
 
   .socialButton {

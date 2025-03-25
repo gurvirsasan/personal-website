@@ -6,7 +6,7 @@ import GradientButton from '../../GradientButton/GradientButton';
 
 export default function HomeSection() {
   return (
-    <SectionCard id="home" isFirstSection={true} hasGradient={true} noBackground={true}>
+    <SectionCard id="home" isFirstSection={true} hasGradient={true} noBackground={true} isTallSection={true}>
       <div className={styles.homeContent}>
         <div className={styles.profileContainer}>
           <div className={styles.thoughtBubble}>
