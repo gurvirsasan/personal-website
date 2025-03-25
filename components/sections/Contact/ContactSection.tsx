@@ -11,7 +11,7 @@ export default function ContactSection() {
           Feel free to reach out to me through email.
         </p>
         <div className="flex flex-wrap justify-center gap-6">
-          <GradientButton href="mailto:gurvirsasan@gmail.com" className="min-w-[160px]">
+          <GradientButton href="mailto:gurvirsasan1@gmail.com" className="min-w-[160px]">
             <FaEnvelope className="mr-2 text-lg" />
             Email Me
           </GradientButton>
