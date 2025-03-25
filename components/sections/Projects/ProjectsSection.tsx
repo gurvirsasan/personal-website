@@ -19,7 +19,7 @@ const projects = [
     tags: ['React', 'Node.js', 'PostgreSQL', 'Express', 'GDSC']
   },
   {
-    title: 'MMAMetrics 3',
+    title: 'MMAMetrics',
     description: 'Web Scraping and Data Visualization for MMA Statistics',
     imageUrl: '/mma.png',
     projectUrl: 'https://github.com/gurvirsasan/mmametrics',
