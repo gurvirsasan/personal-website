@@ -173,7 +173,7 @@
 
 @media screen and (max-width: 768px) {
   .timeline::after {
-    left: 31px;
+    left: 38px;
   }
 
   .timelineItem {
@@ -187,6 +187,11 @@
     margin-right: 0 !important;
     padding: 15px 20px 15px 25px;
     text-align: left;
+  }
+
+  .timelineItem:nth-child(odd) .timelineContent {
+    text-align: left;
+    padding: 15px 20px 15px 25px;
   }
 
   .year {
@@ -214,6 +219,7 @@
   .timelineItem:nth-child(odd) .companyInfo,
   .timelineItem:nth-child(even) .companyInfo {
     flex-direction: row;
+    justify-content: flex-start;
   }
 
   .companyLogo {
@@ -227,15 +233,21 @@
     font-size: 1.2rem;
   }
 
+  .timelineItem:nth-child(odd) .companyDetails {
+    align-items: flex-start;
+    text-align: left;
+  }
+
   .role {
     font-size: 1rem;
   }
 
   .timelineItem::after {
-    left: 15px;
+    left: 30px;
     transform: none;
     width: 16px;
     height: 16px;
+    top: 16px;
   }
 
   .companyInfo {
