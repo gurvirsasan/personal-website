@@ -1,7 +1,7 @@
 .skillsContainer {
   display: flex;
-  flex-direction: column;
-  gap: 4rem;
+  flex-direction: row;
+  gap: 2rem;
   width: 100%;
   max-width: 2000px;
   margin: 0 auto;
@@ -17,6 +17,15 @@
   border-radius: 20px;
   border: 1px solid rgba(var(--card-border), 0.2);
   box-shadow: 0 4px 20px rgba(var(--text-primary), 0.05);
+  flex: 1;
+}
+
+.skillsSection.languages {
+  border-left: 3px solid rgba(59, 130, 246, 0.5);
+}
+
+.skillsSection.technologies {
+  border-left: 3px solid rgba(16, 185, 129, 0.5);
 }
 
 .sectionTitle {
@@ -134,8 +143,19 @@
 
 @media (max-width: 768px) {
   .skillsContainer {
+    flex-direction: column;
     gap: 2rem;
     padding: 0 1rem;
+  }
+  
+  .skillsSection.languages,
+  .skillsSection.technologies {
+    border-left: none;
+    border-top: 3px solid rgba(59, 130, 246, 0.5);
+  }
+  
+  .skillsSection.technologies {
+    border-top: 3px solid rgba(16, 185, 129, 0.5);
   }
 
   .skillsSection {

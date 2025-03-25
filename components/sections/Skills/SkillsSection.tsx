@@ -10,12 +10,12 @@ import {
 import { FaJava, FaTerminal, FaDatabase } from 'react-icons/fa';
 
 const languages = [
-  { name: 'Python', icon: SiPython },
-  { name: 'Scala', icon: SiScala },
   { name: 'TypeScript', icon: SiTypescript },
+  { name: 'Python', icon: SiPython },
   { name: 'Java', icon: FaJava },
   { name: 'Kotlin', icon: SiKotlin },
   { name: 'C', icon: SiC },
+  { name: 'Scala', icon: SiScala },
   { name: 'HTML/CSS', icon: SiHtml5 },
   { name: 'Bash', icon: FaTerminal },
   { name: 'PostgreSQL', icon: SiPostgresql },
@@ -24,8 +24,8 @@ const languages = [
 
 const technologies = [
   { name: 'React', icon: SiReact },
-  { name: 'React Native', icon: SiReactrouter },
   { name: 'Angular', icon: SiAngular },
+  { name: 'React Native', icon: SiReactrouter },
   { name: 'Node', icon: SiNodedotjs },
   { name: 'Play', icon: SiFramework },
   { name: 'Redux', icon: SiRedux },
