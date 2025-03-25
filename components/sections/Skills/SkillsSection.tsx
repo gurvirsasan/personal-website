@@ -30,7 +30,7 @@ const technologies = [
   { name: 'Play', icon: SiFramework },
   { name: 'Redux', icon: SiRedux },
   { name: 'Next', icon: SiNextdotjs },
-  { name: 'JQuery', icon: SiJquery },
+  { name: 'AWS', icon: SiAmazon },
   { name: 'Express', icon: SiExpress },
   { name: 'Jest', icon: SiJest },
   { name: 'Git', icon: SiGit },
@@ -38,7 +38,7 @@ const technologies = [
   { name: 'Postman', icon: SiPostman },
   { name: 'Docker', icon: SiDocker },
   { name: 'Plaid', icon: FaDatabase },
-  { name: 'AWS', icon: SiAmazon },
+  { name: 'JQuery', icon: SiJquery },
 ];
 
 export default function SkillsSection() {

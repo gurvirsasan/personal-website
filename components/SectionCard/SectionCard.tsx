@@ -40,7 +40,7 @@ export default function SectionCard({
       style={{
         height: customHeight || (isTallSection ? 'auto' : '100vh'),
         minHeight: customHeight || '100vh',
-        width: '100vw',
+        width: '100%',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
