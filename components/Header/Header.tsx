@@ -6,7 +6,7 @@ export default function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'education', 'experience', 'skills', 'projects', 'contact'];
+      const sections = ['home', 'education', 'experience', 'projects', 'skills', 'contact'];
       const viewportHeight = window.innerHeight;
       const viewportMiddle = viewportHeight / 2;
 
@@ -62,16 +62,16 @@ export default function Header() {
           Experience
         </button>
         <button
-          className={`${styles.navLink} ${activeSection === 'skills' ? styles.active : ''}`}
-          onClick={() => scrollToSection('skills')}
-        >
-          Skills
-        </button>
-        <button
           className={`${styles.navLink} ${activeSection === 'projects' ? styles.active : ''}`}
           onClick={() => scrollToSection('projects')}
         >
           Projects
+        </button>
+        <button
+          className={`${styles.navLink} ${activeSection === 'skills' ? styles.active : ''}`}
+          onClick={() => scrollToSection('skills')}
+        >
+          Skills
         </button>
         <button
           className={`${styles.navLink} ${activeSection === 'contact' ? styles.active : ''}`}
