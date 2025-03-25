@@ -30,9 +30,9 @@
 
 .secondBubble {
   composes: thoughtBubble;
-  top: -50px;
+  top: 60px;
   left: auto;
-  right: -120px;
+  right: -90px;
   animation: float 1.5s ease-in-out 0.75s infinite;
   font-size: 1.6rem;
 }
@@ -167,10 +167,29 @@
   .thoughtBubble {
     font-size: 1.2rem;
     padding: 15px 25px;
+    top: -50px;
+    left: -40px;
   }
 
   .secondBubble {
     font-size: 1.1rem;
+    top: 40px;
+    left: auto;
+    right: -50px;
+  }
+
+  .thoughtBubble::after, .secondBubble::after {
+    width: 15px;
+    height: 15px;
+    bottom: -8px;
+    right: 30px;
+  }
+
+  .thoughtBubble::before, .secondBubble::before {
+    width: 8px;
+    height: 8px;
+    bottom: -16px;
+    right: 45px;
   }
 
   .socialLinks {
@@ -180,5 +199,61 @@
 
   .socialButton {
     width: 200px;
+  }
+}
+
+/* iPhone and smaller mobile screens */
+@media (max-width: 480px) {
+  .profileContainer {
+    width: 280px;
+    height: 280px;
+  }
+
+  .profileImage {
+    width: 280px;
+    height: 280px;
+    border-width: 3px;
+  }
+
+  .thoughtBubble {
+    font-size: 1rem;
+    padding: 12px 18px;
+    top: -40px;
+    left: -30px;
+    border-radius: 15px;
+  }
+
+  .secondBubble {
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    top: 30px;
+    left: auto;
+    right: -40px;
+    border-radius: 15px;
+  }
+
+  .thoughtBubble::after, .secondBubble::after {
+    width: 10px;
+    height: 10px;
+    bottom: -6px;
+    right: 20px;
+  }
+
+  .thoughtBubble::before, .secondBubble::before {
+    width: 6px;
+    height: 6px;
+    bottom: -12px;
+    right: 30px;
+  }
+
+  .socialLinks {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .socialButton {
+    width: 180px;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
   }
 } 

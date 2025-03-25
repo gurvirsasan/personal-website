@@ -40,4 +40,13 @@
     gap: 1rem;
     padding: 1rem;
   }
+}
+
+/* iPhone and smaller mobile screens */
+@media (max-width: 480px) {
+  .projectsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0.75rem;
+  }
 } 
