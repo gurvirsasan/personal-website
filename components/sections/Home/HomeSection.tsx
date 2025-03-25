@@ -2,6 +2,7 @@ import Image from 'next/image';
 import styles from './HomeSection.module.css';
 import SectionCard from '../../SectionCard/SectionCard';
 import { FaLinkedin, FaGithub } from 'react-icons/fa';
+import GradientButton from '../../GradientButton/GradientButton';
 
 export default function HomeSection() {
   return (
@@ -24,24 +25,18 @@ export default function HomeSection() {
           />
         </div>
         <div className={styles.socialLinks}>
-          <a
+          <GradientButton
             href="https://www.linkedin.com/in/gurvirsasan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.socialButton}
+            icon={<FaLinkedin />}
           >
-            <FaLinkedin className={styles.socialIcon} />
             LinkedIn
-          </a>
-          <a
+          </GradientButton>
+          <GradientButton
             href="https://www.github.com/gurvirsasan"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.socialButton}
+            icon={<FaGithub />}
           >
-            <FaGithub className={styles.socialIcon} />
             GitHub
-          </a>
+          </GradientButton>
         </div>
       </div>
     </SectionCard>

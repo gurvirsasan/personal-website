@@ -16,6 +16,7 @@
   gap: 2rem;
   background: rgba(var(--card-bg), 0.5);
   padding: 2rem;
+  padding-top: 0;
   border-radius: 20px;
   border: 1px solid rgba(var(--card-border), 0.2);
   width: 100%;

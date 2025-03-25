@@ -8,6 +8,7 @@ interface SectionCardProps {
   isTallSection?: boolean;
   hasGradient?: boolean;
   noBackground?: boolean;
+  customHeight?: string;
 }
 
 export default function SectionCard({
@@ -18,14 +19,27 @@ export default function SectionCard({
   isTallSection = false,
   hasGradient = false,
   noBackground = false,
+  customHeight,
 }: SectionCardProps) {
+  // Split children into title content and main content
+  let titleContent = null;
+  let mainContent = children;
+  
+  if (Array.isArray(children)) {
+    const [first, ...rest] = children;
+    if (first?.type === 'div') {
+      titleContent = first;
+      mainContent = rest;
+    }
+  }
+
   return (
     <section
       id={id}
       className={styles.section}
       style={{
-        height: isTallSection ? 'auto' : '100vh',
-        minHeight: '100vh',
+        height: customHeight || (isTallSection ? 'auto' : '100vh'),
+        minHeight: customHeight || '100vh',
         width: '100vw',
         display: 'flex',
         alignItems: 'center',
@@ -50,8 +64,11 @@ export default function SectionCard({
           padding: '0 2rem',
         }}
       >
-        {title && <h2 className={styles.sectionTitle}>{title}</h2>}
-        <div className={styles.description}>{children}</div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '2rem', width: '100%', justifyContent: 'center' }}>
+          {title && <h2 className={styles.sectionTitle}>{title}</h2>}
+          {titleContent}
+        </div>
+        <div className={styles.description}>{mainContent}</div>
       </div>
     </section>
   );
