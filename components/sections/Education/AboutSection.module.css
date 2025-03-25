@@ -290,11 +290,13 @@
 @media (max-width: 480px) {
   .aboutContent {
     padding: 0.5rem;
+    margin-top: -2rem;
   }
 
   .education {
     padding: 0.8rem;
     gap: 0.8rem;
+    margin-top: -1rem;
   }
 
   .uoftLogo {
