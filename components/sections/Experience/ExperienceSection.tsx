@@ -69,7 +69,7 @@ export default function ExperienceSection() {
       company: 'Nojumi Solutions',
       logo: '/nojumi logo.jpeg',
       role: 'Software Developer',
-      duration: 'Oct 2024 - Present',
+      duration: 'Oct 2024 - Apr 2025',
       relevant: true
     },
     {
