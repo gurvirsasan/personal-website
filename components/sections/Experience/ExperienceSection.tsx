@@ -72,13 +72,14 @@ export default function ExperienceSection() {
       duration: 'Oct 2024 - Present',
       relevant: true
     },
-    // {
-    //   year: 2025,
-    //   company: 'Relay Financial',
-    //   logo: '/relay.jpg',
-    //   role: 'Software Engineer II',
-    //   duration: 'Apr 2025 - Present'
-    // }
+    {
+      year: 2025,
+      company: 'Relay Financial',
+      logo: '/relay.jpg',
+      role: 'Software Engineer II',
+      duration: 'Apr 2025 - Present',
+      relevant: true
+    }
   ];
 
   if (showRelevant) {
