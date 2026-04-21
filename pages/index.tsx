@@ -8,7 +8,26 @@ import ExperienceSection from '../components/sections/Experience/ExperienceSecti
 import ContactSection from '../components/sections/Contact/ContactSection';
 import DownloadButton from '../components/DownloadButton/DownloadButton';
 
+
+
 export default function Home() {
+  const showNewSite = process.env.NEXT_PUBLIC_SHOW_NEW_SITE === "true";
+
+  return (
+    <>
+      { showNewSite ? <NewSite /> : <OldSite/>}
+    </>
+  );
+}
+
+const NewSite = () => {
+  return (
+    <h1> hello new site v2</h1>
+  )
+}
+
+
+const OldSite = () => {
   return (
     <>
       <Background />
@@ -23,5 +42,5 @@ export default function Home() {
         <ContactSection />
       </main>
     </>
-  );
+  )
 }
