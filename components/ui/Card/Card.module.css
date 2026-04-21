@@ -1,0 +1,53 @@
+.root {
+  border-radius: var(--ui-radius-lg);
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.paddingSm {
+  padding: var(--ui-space-md);
+}
+.paddingMd {
+  padding: var(--ui-space-lg);
+}
+.paddingLg {
+  padding: var(--ui-space-xl);
+}
+
+.elevated {
+  box-shadow: var(--ui-shadow-sm);
+}
+
+.interactive:hover {
+  box-shadow: var(--ui-shadow-md);
+  transform: translateY(-3px);
+}
+
+.outline {
+  box-shadow: none;
+}
+
+.ghost {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+/*
+ * Real 1px gradient ring + inner surface (no background-clip trick).
+ * Corners stay clean; hover transform applies to this outer shell so the ring lifts with the card.
+ */
+.gradientBorder {
+  border: none;
+  background: var(--ui-gradient-vibrant);
+  padding: 1px;
+  border-radius: var(--ui-radius-lg);
+  box-shadow: var(--ui-shadow-sm);
+}
+
+.gradientInner {
+  border-radius: calc(var(--ui-radius-lg) - 1px);
+  background: var(--ui-surface);
+  min-height: 0;
+}

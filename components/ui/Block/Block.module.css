@@ -1,0 +1,30 @@
+
+.root {
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid var(--ui-border);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow-xs);
+}
+
+.paddingNone {
+  padding: 0;
+}
+.paddingSm {
+  padding: var(--ui-space-md);
+}
+.paddingMd {
+  padding: var(--ui-space-lg);
+}
+.paddingLg {
+  padding: var(--ui-space-xl);
+}
+
+.muted {
+  background: color-mix(in srgb, var(--ui-surface) 88%, var(--ui-canvas));
+}
+
+.glass {
+  background: var(--ui-surface-muted);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
