@@ -29,7 +29,7 @@ const NewSite = () => {
 
 const OldSite = () => {
   return (
-    <>
+    <div className="site-v1">
       <Background />
       <Header />
       <DownloadButton />
@@ -41,6 +41,6 @@ const OldSite = () => {
         <SkillsSection />
         <ContactSection />
       </main>
-    </>
-  )
-}
+    </div>
+  );
+};
