@@ -7,29 +7,22 @@ import SkillsSection from '../components/sections/Skills/SkillsSection';
 import ExperienceSection from '../components/sections/Experience/ExperienceSection';
 import ContactSection from '../components/sections/Contact/ContactSection';
 import DownloadButton from '../components/DownloadButton/DownloadButton';
-
-
+import Portfolio from '../components/v2/Portfolio';
 
 export default function Home() {
-  const showNewSite = process.env.NEXT_PUBLIC_SHOW_NEW_SITE === "true";
+  const showOldSite = process.env.NEXT_PUBLIC_SHOW_OLD_SITE === 'true';
 
-  return (
-    <>
-      { showNewSite ? <NewSite /> : <OldSite/>}
-    </>
-  );
+  return <>{!showOldSite ? <NewSite /> : <OldSite />}</>;
 }
 
 const NewSite = () => {
-  return (
-    <h1> hello new site v2</h1>
-  )
-}
+  return <Portfolio />;
+};
 
 
 const OldSite = () => {
   return (
-    <>
+    <div className="site-v1">
       <Background />
       <Header />
       <DownloadButton />
@@ -41,6 +34,6 @@ const OldSite = () => {
         <SkillsSection />
         <ContactSection />
       </main>
-    </>
-  )
-}
+    </div>
+  );
+};

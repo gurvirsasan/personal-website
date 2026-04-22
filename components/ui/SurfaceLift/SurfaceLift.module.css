@@ -1,0 +1,36 @@
+/**
+ * Shared hover “lift” for cards and surfaces.
+ * Uses fine pointer + hover so touch layouts stay stable (no jumpy taps).
+ */
+.root {
+  --surface-lift-y: -2px;
+  --surface-lift-active-y: -1px;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 200ms ease;
+}
+
+.compact {
+  --surface-lift-y: -1px;
+  --surface-lift-active-y: 0px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .root:hover {
+    transform: translateY(var(--surface-lift-y));
+    box-shadow: var(--ui-shadow-sm);
+  }
+
+  .root:active {
+    transform: translateY(var(--surface-lift-active-y));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .root {
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+  }
+
+  .root:hover,
+  .root:active {
+    transform: none;
+  }
+}

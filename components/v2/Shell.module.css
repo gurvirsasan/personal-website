@@ -1,0 +1,166 @@
+.root {
+  --nav-rail: 0px;
+  --v2-nav-offset: 1rem;
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  isolation: isolate;
+  color: rgb(var(--text-primary));
+  background: rgb(var(--background-rgb));
+}
+
+/**
+ * Reserve desktop rail width from first paint so main column width does not jump
+ * when `pastHero` toggles (rail stays off-canvas until then via SideNav CSS).
+ */
+@media (min-width: 901px) {
+  .root {
+    --nav-rail: 15rem;
+  }
+
+  .root[data-nav-collapsed='true'] {
+    --nav-rail: 5.5rem;
+  }
+}
+
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: rgb(var(--background-rgb));
+  background-image:
+    radial-gradient(ellipse 130% 100% at 0% 0%, rgb(125 211 252 / 0.2), rgb(var(--background-rgb)) 58%),
+    radial-gradient(ellipse 110% 95% at 100% 0%, rgb(196 181 253 / 0.18), rgb(var(--background-rgb)) 56%),
+    radial-gradient(ellipse 100% 85% at 50% 100%, rgb(251 207 232 / 0.1), rgb(var(--background-rgb)) 54%);
+}
+
+.root[data-theme='dark'] .bg {
+  background-image:
+    radial-gradient(ellipse 130% 100% at 8% 0%, rgb(255 255 255 / 0.045), rgb(var(--background-rgb)) 60%),
+    radial-gradient(ellipse 115% 95% at 92% 10%, rgb(255 255 255 / 0.03), rgb(var(--background-rgb)) 58%),
+    radial-gradient(ellipse 90% 80% at 70% 95%, rgb(168 140 255 / 0.055), rgb(var(--background-rgb)) 56%);
+}
+
+.blobs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  width: clamp(320px, 62vw, 720px);
+  height: clamp(320px, 62vw, 720px);
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.38;
+  transform: translate3d(0, 0, 0);
+}
+
+.blobA {
+  top: -18%;
+  right: -15%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgb(167 139 250 / 0.45),
+    rgb(34 211 238 / 0.08) 52%,
+    rgb(var(--background-rgb)) 72%
+  );
+}
+
+.blobB {
+  bottom: -22%;
+  left: -18%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(34 211 238 / 0.28),
+    rgb(244 114 182 / 0.06) 48%,
+    rgb(var(--background-rgb)) 70%
+  );
+}
+
+.blobC {
+  top: 38%;
+  left: 32%;
+  width: clamp(260px, 48vw, 520px);
+  height: clamp(260px, 48vw, 520px);
+  filter: blur(100px);
+  opacity: 0.22;
+  background: radial-gradient(circle at 50% 50%, rgb(129 140 248 / 0.2), rgb(var(--background-rgb)) 68%);
+}
+
+.root[data-theme='dark'] .blob {
+  opacity: 0.32;
+}
+
+.root[data-theme='dark'] .blobA {
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgb(255 255 255 / 0.07),
+    rgb(168 140 255 / 0.05) 55%,
+    rgb(var(--background-rgb)) 74%
+  );
+}
+
+.root[data-theme='dark'] .blobB {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(255 255 255 / 0.05),
+    rgb(255 255 255 / 0.02) 50%,
+    rgb(var(--background-rgb)) 72%
+  );
+}
+
+.root[data-theme='dark'] .blobC {
+  opacity: 0.16;
+  background: radial-gradient(circle at 50% 50%, rgb(168 140 255 / 0.08), rgb(var(--background-rgb)) 70%);
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  padding-bottom: var(--ui-space-3xl);
+  padding-left: 0;
+  transition: padding-left 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (min-width: 901px) {
+  .main {
+    padding-left: var(--nav-rail);
+  }
+}
+
+@media (max-width: 900px) {
+  .root[data-past-hero='true'] .main {
+    padding-bottom: calc(var(--ui-space-3xl) + 4.25rem);
+  }
+}
+
+.mainInner {
+  width: 100%;
+  max-width: min(48rem, 100%);
+  margin-inline: auto;
+  padding-inline: var(--ui-gutter-x);
+  padding-top: var(--ui-space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 8vw, 5.5rem);
+}
+
+@media (min-width: 901px) {
+  .mainInner {
+    max-width: min(48rem, calc(100vw - var(--nav-rail) - 2.5rem));
+  }
+}
+
+/** Mount point for createPortal overlays (must stay inside .root.theme-scope for tokens). */
+.portalRoot {
+  position: relative;
+  z-index: 2000;
+  pointer-events: none;
+}

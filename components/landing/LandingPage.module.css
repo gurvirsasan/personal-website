@@ -1,0 +1,245 @@
+.page {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow-x: hidden;
+  isolation: isolate;
+  color: rgb(var(--text-primary));
+  background: rgb(var(--background-rgb));
+  transition: background-color 0.25s ease, color 0.2s ease;
+}
+
+/*
+ * Fade each wash to solid rgb(var(--background-rgb)) — never `transparent`
+ * (avoids dark-mode banding when variables use comma-separated RGB triplets).
+ */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-color: rgb(var(--background-rgb));
+  background-image:
+    radial-gradient(ellipse 130% 100% at 0% 0%, rgb(125 211 252 / 0.2), rgb(var(--background-rgb)) 58%),
+    radial-gradient(ellipse 110% 95% at 100% 0%, rgb(196 181 253 / 0.18), rgb(var(--background-rgb)) 56%),
+    radial-gradient(ellipse 100% 85% at 50% 100%, rgb(251 207 232 / 0.1), rgb(var(--background-rgb)) 54%);
+  transition: background-color 0.35s ease, background-image 0.35s ease;
+}
+
+.page[data-theme='dark'] .bg {
+  /* Neutral lifts + one faint violet wash so the rainbow stays rare (hero / name) */
+  background-image:
+    radial-gradient(ellipse 130% 100% at 8% 0%, rgb(255 255 255 / 0.045), rgb(var(--background-rgb)) 60%),
+    radial-gradient(ellipse 115% 95% at 92% 10%, rgb(255 255 255 / 0.03), rgb(var(--background-rgb)) 58%),
+    radial-gradient(ellipse 90% 80% at 70% 95%, rgb(168 140 255 / 0.055), rgb(var(--background-rgb)) 56%);
+}
+
+/* Large blurred orbs — extra blur + lower contrast = smoother than tight radials */
+.blobs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  width: clamp(320px, 62vw, 720px);
+  height: clamp(320px, 62vw, 720px);
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.38;
+  transform: translate3d(0, 0, 0);
+}
+
+.blobA {
+  top: -18%;
+  right: -15%;
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgb(167 139 250 / 0.45),
+    rgb(34 211 238 / 0.08) 52%,
+    rgb(var(--background-rgb)) 72%
+  );
+}
+
+.blobB {
+  bottom: -22%;
+  left: -18%;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(34 211 238 / 0.28),
+    rgb(244 114 182 / 0.06) 48%,
+    rgb(var(--background-rgb)) 70%
+  );
+}
+
+.blobC {
+  top: 38%;
+  left: 32%;
+  width: clamp(260px, 48vw, 520px);
+  height: clamp(260px, 48vw, 520px);
+  filter: blur(100px);
+  opacity: 0.22;
+  background: radial-gradient(circle at 50% 50%, rgb(129 140 248 / 0.2), rgb(var(--background-rgb)) 68%);
+}
+
+.page[data-theme='dark'] .blob {
+  opacity: 0.32;
+}
+
+.page[data-theme='dark'] .blobA {
+  background: radial-gradient(
+    circle at 40% 40%,
+    rgb(255 255 255 / 0.07),
+    rgb(168 140 255 / 0.05) 55%,
+    rgb(var(--background-rgb)) 74%
+  );
+}
+
+.page[data-theme='dark'] .blobB {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(255 255 255 / 0.05),
+    rgb(255 255 255 / 0.02) 50%,
+    rgb(var(--background-rgb)) 72%
+  );
+}
+
+.page[data-theme='dark'] .blobC {
+  opacity: 0.16;
+  background: radial-gradient(circle at 50% 50%, rgb(168 140 255 / 0.08), rgb(var(--background-rgb)) 70%);
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+}
+
+.shell {
+  width: 100%;
+  max-width: min(1440px, 100%);
+  margin-inline: auto;
+  padding-inline: clamp(1rem, 5vw, 3rem);
+}
+
+.heroRow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ui-space-lg);
+  width: 100%;
+}
+
+.heroInner {
+  width: 100%;
+  max-width: min(40rem, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ui-space-md);
+}
+
+@media (min-width: 768px) {
+  .heroInner {
+    max-width: min(44rem, 94vw);
+  }
+}
+
+@media (min-width: 1200px) {
+  .heroInner {
+    max-width: min(48rem, 88vw);
+  }
+}
+
+@media (min-width: 1600px) {
+  .heroInner {
+    max-width: min(52rem, 82vw);
+  }
+}
+
+.heroCard {
+  text-align: center;
+  width: 100%;
+  margin-inline: auto;
+}
+
+.accentLine {
+  width: 3rem;
+  height: 3px;
+  border-radius: 999px;
+  margin: 0 auto var(--ui-space-md);
+  background: var(--ui-gradient-vibrant);
+}
+
+.lower {
+  width: 100%;
+  margin-top: var(--ui-space-lg);
+}
+
+/* One composed surface: reads as one intentional block on wide screens */
+.deck {
+  width: 100%;
+  border-radius: calc(var(--ui-radius-lg) + 4px);
+  border: 1px solid color-mix(in srgb, rgb(var(--card-border)) 85%, transparent);
+  background: color-mix(in srgb, rgb(var(--card-bg)) 88%, rgb(var(--background-rgb)));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--ui-shadow-md);
+  padding: clamp(1.15rem, 2.8vw, 2rem);
+}
+
+.page[data-theme='dark'] .deck {
+  background: color-mix(in srgb, rgb(var(--card-bg)) 72%, rgb(var(--background-rgb)));
+  border-color: color-mix(in srgb, rgb(var(--card-border)) 70%, rgb(var(--background-rgb)));
+  box-shadow:
+    var(--ui-shadow-md),
+    0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.deckGrid {
+  display: grid;
+  gap: clamp(var(--ui-space-xl), 3vw, var(--ui-space-2xl));
+  align-items: stretch;
+}
+
+@media (min-width: 900px) {
+  .deckGrid {
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    gap: var(--ui-space-2xl);
+  }
+
+  .deckAside {
+    padding-left: var(--ui-space-xl);
+    border-left: 1px solid color-mix(in srgb, rgb(var(--card-border)) 65%, transparent);
+  }
+}
+
+.deckAside {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-md);
+  min-height: 100%;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-space-xs);
+}
+
+.roadmapList {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-sm);
+  color: var(--ui-text-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.roadmapList li::marker {
+  color: var(--ui-accent);
+}

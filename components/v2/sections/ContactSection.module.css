@@ -1,0 +1,100 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-2xl);
+}
+
+@media (min-width: 800px) {
+  .layout {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--ui-space-3xl);
+  }
+
+  .copy {
+    flex: 0 1 26rem;
+  }
+
+  .cardWrap {
+    flex: 0 1 22rem;
+    width: 100%;
+    max-width: 24rem;
+  }
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-md);
+}
+
+.badge {
+  align-self: flex-start;
+  margin-top: var(--ui-space-xs);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 750;
+  letter-spacing: 0.04em;
+  color: color-mix(in srgb, var(--ui-accent) 12%, var(--ui-text));
+  background: color-mix(in srgb, var(--ui-accent) 14%, var(--ui-surface));
+  border: 1px solid color-mix(in srgb, var(--ui-accent) 28%, var(--ui-border));
+}
+
+.cardWrap {
+  position: relative;
+  margin-inline: auto;
+  width: 100%;
+  max-width: 22rem;
+}
+
+@media (min-width: 800px) {
+  .cardWrap {
+    margin-inline: 0;
+  }
+}
+
+.aura {
+  position: absolute;
+  inset: -18%;
+  border-radius: var(--ui-radius-lg);
+  background: conic-gradient(
+    from 200deg at 50% 50%,
+    color-mix(in srgb, var(--ui-accent) 55%, transparent),
+    transparent 40%,
+    color-mix(in srgb, var(--ui-accent) 35%, transparent),
+    transparent 75%
+  );
+  opacity: 0.45;
+  filter: blur(28px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  border: 1px solid color-mix(in srgb, var(--ui-accent) 22%, var(--ui-border));
+  box-shadow: var(--ui-shadow-md), 0 0 0 1px color-mix(in srgb, var(--ui-accent) 8%, transparent);
+}
+
+.cardLead {
+  margin: 0 0 var(--ui-space-md);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted);
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-sm);
+}
+
+.actionBtn {
+  width: 100%;
+  justify-content: center;
+}

@@ -1,0 +1,40 @@
+
+.root {
+  font-family: var(--ui-font-sans);
+  color: var(--ui-text);
+  line-height: 1.6;
+}
+
+.body {
+  font-size: 1rem;
+}
+
+.lead {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.muted {
+  color: var(--ui-text-muted);
+}
+
+.small {
+  font-size: 0.875rem;
+}
+
+.label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted);
+}
+
+.mono {
+  font-family: var(--ui-font-mono);
+  font-size: 0.9em;
+}
+
+.balance {
+  text-wrap: balance;
+}

@@ -1,0 +1,648 @@
+.intro {
+  max-width: 42rem;
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-sm);
+}
+
+@media (max-width: 639px) {
+  .intro {
+    gap: var(--ui-space-xs);
+  }
+
+  .intro p {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+}
+
+.bento {
+  display: grid;
+  gap: var(--ui-space-md);
+  grid-template-columns: 1fr;
+  margin-top: var(--ui-space-lg);
+  min-width: 0;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .bento {
+    margin-top: var(--ui-space-xl);
+  }
+}
+
+@media (min-width: 880px) {
+  .bento {
+    grid-template-columns: 1fr;
+  }
+
+  .trackCell {
+    grid-column: 1;
+  }
+}
+
+/* Layout hooks for the education hero card */
+.heroCard {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.heroCardBody {
+  padding: var(--ui-space-lg);
+  min-width: 0;
+}
+
+@media (max-width: 639px) {
+  .heroCardBody {
+    padding: var(--ui-space-md);
+  }
+}
+
+@media (max-width: 360px) {
+  .heroCardBody {
+    padding: var(--ui-space-sm);
+  }
+}
+
+.heroTop {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-md);
+}
+
+@media (min-width: 520px) {
+  .heroTop {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--ui-space-lg);
+  }
+}
+
+.logoPlate {
+  width: fit-content;
+}
+
+.logoImg {
+  display: block;
+  object-fit: contain;
+  width: auto;
+  height: auto;
+  max-width: min(5.75rem, 38vw);
+  max-height: 5.5rem;
+}
+
+@media (min-width: 520px) {
+  .logoImg {
+    max-width: 7rem;
+    max-height: none;
+  }
+}
+
+.heroMeta {
+  flex: 1;
+  min-width: 0;
+}
+
+.institution {
+  margin: 0 0 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted);
+}
+
+.degree {
+  margin: 0;
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: var(--ui-text);
+  overflow-wrap: anywhere;
+}
+
+.years {
+  margin: 0.35rem 0 var(--ui-space-md);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ui-text-muted);
+}
+
+.tagRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--ui-space-xs);
+}
+
+.wins {
+  margin: var(--ui-space-lg) 0 0;
+  padding: var(--ui-space-md) 0 0 1.2rem;
+  border-top: 1px solid var(--ui-border);
+  list-style: disc;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-xs);
+}
+
+.wins li {
+  margin: 0;
+  padding: 0.1rem 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--ui-text);
+}
+
+.trackCell {
+  border-radius: var(--ui-radius-md);
+  padding: var(--ui-space-md);
+  border: 1px solid var(--ui-border);
+  background: var(--ui-surface);
+  min-width: 0;
+  width: 100%;
+}
+
+@media (max-width: 639px) {
+  .trackCell {
+    padding-inline: var(--ui-space-md);
+  }
+}
+
+/** Room above the fixed mobile dock when a track is expanded */
+@media (max-width: 900px) {
+  .trackCell:has(.showLessBtn) {
+    padding-bottom: max(var(--ui-space-xl), 5.5rem);
+  }
+}
+
+.trackLabel {
+  margin: 0 0 var(--ui-space-sm);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ui-text-muted);
+}
+
+/**
+ * Collapsed: course pills live in a horizontal scroller; the "+N" chip sits *beside* it so it
+ * is never clipped by the overflow region (it used to be the last flex child inside the scroller).
+ */
+.collapsedTrack {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--ui-space-sm);
+  min-width: 0;
+}
+
+.pillScroller {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: var(--ui-space-sm);
+  flex: 1 1 0;
+  min-width: 0;
+  overflow-x: auto;
+  padding-top: var(--ui-space-xs);
+  padding-bottom: var(--ui-space-xs);
+  padding-inline: 1px;
+  padding-inline-end: var(--ui-space-sm);
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: var(--ui-space-sm);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  /* Keep scroll affordance without a visible bar (desktop collapsed strip). */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.pillScroller::-webkit-scrollbar {
+  display: none;
+}
+
+/*
+ * Keep collapsed desktop rows visually balanced after the main column was tightened.
+ * Without this, the fixed "+N" chip can make the last course tile look overlapped/cut.
+ */
+@media (min-width: 901px) {
+  .pillScroller .courseTile {
+    width: min(9.25rem, 20vw);
+  }
+
+  .showAllChip {
+    width: min(4rem, 14vw);
+  }
+}
+
+/* Collapsed tracks: vertical list on narrow viewports (no sideways scroll, larger tap targets). */
+@media (max-width: 900px) {
+  .collapsedTrack {
+    flex-direction: column;
+  }
+
+  .pillScroller {
+    flex: none;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    overflow-x: visible;
+    overflow-y: visible;
+    scroll-snap-type: none;
+    padding-inline: 0;
+    padding-top: 0;
+    gap: var(--ui-space-sm);
+  }
+
+  .pillScroller .courseTile {
+    width: 100%;
+    min-height: 4.35rem;
+  }
+
+  .showAllChip {
+    width: 100%;
+    min-height: 2.85rem;
+    flex-direction: row;
+    justify-content: center;
+    gap: var(--ui-space-sm);
+  }
+}
+
+/* Expanded: grid of every course */
+.pillTrack {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 10.25rem), 1fr));
+  gap: var(--ui-space-sm);
+  overflow-x: visible;
+  width: 100%;
+}
+
+@media (max-width: 399px) {
+  .pillTrack {
+    grid-template-columns: 1fr;
+  }
+}
+
+.courseTile {
+  flex: 0 0 auto;
+  width: min(10.5rem, 72vw);
+  min-width: 0;
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: var(--ui-space-2xs);
+  padding: var(--ui-space-sm) var(--ui-space-md);
+  border-radius: var(--ui-radius-md);
+  border: 1px solid var(--ui-border);
+  background: color-mix(in srgb, var(--ui-surface) 96%, var(--ui-canvas));
+  color: var(--ui-text);
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  min-height: 4.25rem;
+  appearance: none;
+  -webkit-appearance: none;
+  transition:
+    transform 0.22s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.22s ease,
+    border-color 0.22s ease,
+    background-color 0.24s ease,
+    background-image 0.22s ease;
+}
+
+@media (hover: hover) {
+  .courseTile:hover {
+    transform: translateY(-2px);
+    border-color: transparent;
+    background-color: transparent;
+    background-image:
+      linear-gradient(
+        150deg,
+        color-mix(in srgb, var(--ui-surface) 90%, var(--ui-accent-cyan) 10%),
+        color-mix(in srgb, var(--ui-surface) 86%, var(--ui-accent-fuchsia) 14%)
+      ),
+      var(--ui-gradient-vibrant);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--ui-text) 14%, transparent);
+  }
+
+  .courseTile:hover .courseCode {
+    color: var(--ui-text);
+  }
+
+  .courseTile:hover .courseTitle {
+    color: color-mix(in srgb, var(--ui-text-muted) 35%, var(--ui-text));
+  }
+}
+
+@media (hover: none) {
+  .courseTile:active {
+    transform: scale(0.98);
+    border-color: transparent;
+    background-color: transparent;
+    background-image:
+      linear-gradient(
+        150deg,
+        color-mix(in srgb, var(--ui-surface) 92%, var(--ui-accent-cyan) 8%),
+        color-mix(in srgb, var(--ui-surface) 90%, var(--ui-accent-fuchsia) 10%)
+      ),
+      var(--ui-gradient-vibrant);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-repeat: no-repeat;
+  }
+}
+
+.courseTile:focus-visible {
+  outline: none;
+  box-shadow: var(--ui-focus-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .courseTile {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .courseTile:hover,
+  .courseTile:active {
+    transform: none;
+  }
+}
+
+.pillTrack .courseTile {
+  width: 100%;
+  scroll-snap-align: unset;
+}
+
+@media (max-width: 639px) {
+  .pillTrack .courseTile {
+    min-height: 5.25rem;
+  }
+}
+
+.showAllChip {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  width: min(4.5rem, 16vw);
+  min-height: 4.75rem;
+  padding: var(--ui-space-xs);
+  border-radius: var(--ui-radius-md);
+  border: 1px dashed var(--ui-border-strong);
+  background: color-mix(in srgb, var(--ui-surface) 92%, var(--ui-canvas));
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  font: inherit;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.showAllChip:hover {
+  border-color: var(--ui-border);
+  color: var(--ui-text);
+  background: color-mix(in srgb, var(--ui-canvas) 28%, var(--ui-surface));
+}
+
+.showAllChip:focus-visible {
+  outline: none;
+  box-shadow: var(--ui-focus-ring);
+}
+
+.showAllIcon {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.showAllMeta {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.showLessBtn {
+  margin-top: var(--ui-space-sm);
+  padding: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ui-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
+
+.showLessBtn:hover {
+  color: var(--ui-text);
+}
+
+.showLessBtn:focus-visible {
+  outline: none;
+  box-shadow: var(--ui-focus-ring);
+  border-radius: var(--ui-radius-sm);
+}
+
+@media (max-width: 639px) {
+  .showAllChip {
+    min-height: 5.25rem;
+  }
+}
+
+.courseCode {
+  display: block;
+  font-family: var(--ui-font-mono);
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--ui-text);
+  transition: color 0.2s ease;
+}
+
+.courseTitle {
+  display: block;
+  font-size: 0.78rem;
+  line-height: 1.35;
+  font-weight: 600;
+  color: var(--ui-text-muted);
+  transition: color 0.2s ease;
+}
+
+/* Course detail drawer */
+.drawerRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 1600;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.drawerBackdrop {
+  position: absolute;
+  inset: 0;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  background: color-mix(in srgb, var(--ui-text) 42%, transparent);
+  backdrop-filter: blur(6px);
+}
+
+.drawerPanel {
+  position: relative;
+  pointer-events: auto;
+  width: 100%;
+  max-width: 100%;
+  max-height: min(88vh, 32rem);
+  border-radius: var(--ui-radius-lg) var(--ui-radius-lg) 0 0;
+  padding: var(--ui-space-lg);
+  padding-left: max(var(--ui-space-lg), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--ui-space-lg), env(safe-area-inset-right, 0px));
+  padding-bottom: max(var(--ui-space-lg), env(safe-area-inset-bottom, 0px));
+  background: var(--ui-surface);
+  border: 1px solid var(--ui-border);
+  border-bottom: none;
+  box-shadow: 0 -12px 48px color-mix(in srgb, var(--ui-text) 16%, transparent);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-md);
+  animation: sheetUp 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@media (min-width: 720px) {
+  .drawerRoot {
+    align-items: stretch;
+    justify-content: flex-end;
+  }
+
+  .drawerPanel {
+    width: min(26rem, calc(100vw - 1.5rem));
+    max-height: none;
+    height: 100%;
+    border-radius: 0;
+    border-bottom: 1px solid var(--ui-border);
+    border-right: none;
+    padding-top: max(var(--ui-space-lg), env(safe-area-inset-top, 0px));
+    box-shadow: -16px 0 48px color-mix(in srgb, var(--ui-text) 14%, transparent);
+    animation: railIn 0.36s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawerPanel {
+    animation: none;
+  }
+}
+
+@keyframes sheetUp {
+  from {
+    transform: translateY(110%);
+    opacity: 0.6;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes railIn {
+  from {
+    transform: translateX(105%);
+    opacity: 0.75;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--ui-space-md);
+}
+
+.drawerTitle {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
+}
+
+.drawerCode {
+  font-family: var(--ui-font-mono);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--ui-text-muted);
+}
+
+.drawerDesc {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ui-text);
+}
+
+.drawerName {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ui-text);
+}
+
+.drawerClose {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ui-radius-md);
+  border: 1px solid var(--ui-border);
+  background: color-mix(in srgb, var(--ui-surface) 90%, var(--ui-canvas));
+  color: var(--ui-text);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.drawerClose:hover {
+  background: color-mix(in srgb, var(--ui-canvas) 45%, var(--ui-surface));
+}
+
+.drawerClose svg {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+.drawerBody {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-lg);
+  overflow-y: auto;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.drawerCta {
+  align-self: flex-start;
+}
+
+.drawerCta svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}

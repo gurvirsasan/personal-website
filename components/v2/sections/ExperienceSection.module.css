@@ -1,0 +1,174 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-lg);
+  margin-bottom: var(--ui-space-lg);
+}
+
+@media (min-width: 720px) {
+  .header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.toggle {
+  display: flex;
+  gap: var(--ui-space-xs);
+  flex-shrink: 0;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-md);
+}
+
+.item {
+  min-width: 0;
+}
+
+.card {
+  padding: var(--ui-space-lg);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid var(--ui-border);
+  background-color: var(--ui-surface);
+  background-image: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--ui-surface) 95%, var(--ui-accent)),
+    color-mix(in srgb, var(--ui-surface) 100%, transparent)
+  );
+  background-repeat: no-repeat;
+  box-shadow: var(--ui-shadow-xs);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.22s ease,
+    background-image 0.22s ease,
+    background-color 0.24s ease;
+}
+
+/* Gradient ring + lift shadow (overrides SurfaceLift hover shadow on this surface). */
+@media (hover: hover) and (pointer: fine) {
+  .card[data-experience-card]:hover {
+    border-color: transparent;
+    background-color: transparent;
+    background-image:
+      linear-gradient(
+        150deg,
+        color-mix(in srgb, var(--ui-surface) 90%, var(--ui-accent-cyan) 10%),
+        color-mix(in srgb, var(--ui-surface) 86%, var(--ui-accent-fuchsia) 14%)
+      ),
+      var(--ui-gradient-vibrant);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--ui-text) 14%, transparent);
+  }
+}
+
+@media (hover: none) {
+  .card[data-experience-card]:active {
+    border-color: transparent;
+    background-color: transparent;
+    background-image:
+      linear-gradient(
+        150deg,
+        color-mix(in srgb, var(--ui-surface) 92%, var(--ui-accent-cyan) 8%),
+        color-mix(in srgb, var(--ui-surface) 90%, var(--ui-accent-fuchsia) 10%)
+      ),
+      var(--ui-gradient-vibrant);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--ui-space-md);
+  min-width: 0;
+}
+
+.logoPlate {
+  flex-shrink: 0;
+}
+
+.logo {
+  display: block;
+  object-fit: contain;
+  max-height: 48px;
+  width: auto;
+}
+
+/* Wide U of T wordmark: crop to the coat-of-arms side (Education keeps the full mark with contain). */
+.logoUoftCrest {
+  width: 3rem;
+  height: 3rem;
+  max-height: none;
+  object-fit: cover;
+  object-position: left center;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-2xs);
+}
+
+.title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--ui-text);
+}
+
+.company {
+  margin: 0;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ui-text-muted);
+  line-height: 1.35;
+}
+
+.when {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--ui-text-muted);
+  line-height: 1.45;
+}
+
+.whenSep {
+  color: var(--ui-text-muted);
+  opacity: 0.55;
+}
+
+.tenure {
+  font-weight: 600;
+  color: var(--ui-text-muted);
+}
+
+@media (max-width: 639px) {
+  .card {
+    padding: var(--ui-space-md);
+  }
+
+  .cardInner {
+    gap: var(--ui-space-sm);
+  }
+}
