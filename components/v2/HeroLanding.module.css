@@ -1,0 +1,83 @@
+.hero {
+  min-height: 100dvh;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--ui-space-xl) var(--ui-gutter-x);
+  position: relative;
+  z-index: 1;
+}
+
+.inner {
+  width: 100%;
+  max-width: min(40rem, 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ui-space-2xl);
+}
+
+.card {
+  width: 100%;
+  text-align: center;
+}
+
+.accentLine {
+  width: 3rem;
+  height: 3px;
+  border-radius: 999px;
+  margin: 0 auto var(--ui-space-md);
+  background: var(--ui-gradient-vibrant);
+}
+
+.scrollCue {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--ui-space-xs);
+  color: var(--ui-text-muted);
+  user-select: none;
+}
+
+.scrollLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.chevronWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 1px solid var(--ui-border);
+  background: color-mix(in srgb, var(--ui-surface) 55%, transparent);
+}
+
+.chevron {
+  width: 1.35rem;
+  height: 1.35rem;
+  animation: bounce 1.6s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.65;
+  }
+  50% {
+    transform: translateY(5px);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chevron {
+    animation: none;
+  }
+}

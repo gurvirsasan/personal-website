@@ -5,6 +5,10 @@
   transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
 }
 
+.paddingNone {
+  padding: 0;
+}
+
 .paddingSm {
   padding: var(--ui-space-md);
 }

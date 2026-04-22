@@ -1,0 +1,23 @@
+.section {
+  scroll-margin-top: var(--v2-nav-offset, 5.5rem);
+}
+
+.section:not(.visible) {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section:not(.visible),
+  .section.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

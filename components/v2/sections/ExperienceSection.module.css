@@ -1,0 +1,112 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-lg);
+  margin-bottom: var(--ui-space-lg);
+}
+
+@media (min-width: 720px) {
+  .header {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.toggle {
+  display: flex;
+  gap: var(--ui-space-xs);
+  flex-shrink: 0;
+}
+
+.scroller {
+  margin-inline: calc(-1 * var(--ui-gutter-x));
+  padding-inline: var(--ui-gutter-x);
+}
+
+.strip {
+  list-style: none;
+  margin: 0;
+  padding: var(--ui-space-sm) 0 var(--ui-space-md);
+  display: flex;
+  gap: var(--ui-space-md);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  mask-image: linear-gradient(90deg, transparent, #000 2%, #000 98%, transparent);
+}
+
+.slide {
+  flex: 0 0 min(78vw, 17rem);
+  scroll-snap-align: center;
+}
+
+@media (min-width: 720px) {
+  .slide {
+    flex-basis: 15.5rem;
+    scroll-snap-align: start;
+  }
+}
+
+.card {
+  height: 100%;
+  min-height: 13.5rem;
+  padding: var(--ui-space-lg);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid var(--ui-border);
+  background: linear-gradient(
+    165deg,
+    color-mix(in srgb, var(--ui-surface) 95%, var(--ui-accent)),
+    color-mix(in srgb, var(--ui-surface) 100%, transparent)
+  );
+  box-shadow: var(--ui-shadow-xs);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--ui-space-sm);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--ui-shadow-sm);
+}
+
+.year {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: var(--ui-text-muted);
+}
+
+.logoPlate {
+  margin-top: auto;
+}
+
+.logo {
+  display: block;
+  object-fit: contain;
+  max-height: 48px;
+  width: auto;
+}
+
+.company {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.role {
+  margin: 0;
+  font-size: 0.88rem;
+  color: var(--ui-text-muted);
+  line-height: 1.35;
+}
+
+.when {
+  margin: 0;
+  font-size: 0.78rem;
+  color: var(--ui-text-muted);
+}

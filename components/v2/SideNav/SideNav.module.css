@@ -1,0 +1,231 @@
+/* —— Mobile dock —— */
+.mobileDock {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 50;
+  padding: var(--ui-space-sm) var(--ui-gutter-x) calc(var(--ui-space-sm) + env(safe-area-inset-bottom, 0));
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(110%);
+  transition: opacity 0.4s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.mobileDockVisible {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (min-width: 901px) {
+  .mobileDock {
+    display: none;
+  }
+}
+
+.mobileDockList {
+  list-style: none;
+  margin: 0 auto;
+  padding: var(--ui-space-xs);
+  max-width: 28rem;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--ui-space-2xs);
+  border-radius: var(--ui-radius-lg);
+  border: 1px solid var(--ui-border);
+  background: color-mix(in srgb, var(--ui-canvas) 78%, var(--ui-surface));
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: var(--ui-shadow-md);
+}
+
+.dockBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  padding: 0.55rem 0.25rem;
+  border: none;
+  border-radius: var(--ui-radius-md);
+  background: transparent;
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+
+.dockBtn:hover {
+  color: var(--ui-text);
+  background: color-mix(in srgb, var(--ui-surface) 65%, transparent);
+}
+
+.dockBtnActive {
+  color: var(--ui-text);
+  background: color-mix(in srgb, var(--ui-accent) 14%, var(--ui-surface));
+}
+
+.dockIcon {
+  width: 1.35rem;
+  height: 1.35rem;
+}
+
+/* —— Desktop rail —— */
+.rail {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 45;
+  width: 14.5rem;
+  padding: var(--ui-space-md) var(--ui-space-sm);
+  pointer-events: none;
+  opacity: 0;
+  transform: translateX(-105%);
+  transition: opacity 0.35s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), width 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.railVisible {
+  pointer-events: auto;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.railCollapsed {
+  width: 4.75rem;
+}
+
+@media (max-width: 900px) {
+  .rail {
+    display: none;
+  }
+}
+
+.railInner {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-sm);
+  padding: var(--ui-space-md) var(--ui-space-sm);
+  border-radius: 0 var(--ui-radius-lg) var(--ui-radius-lg) 0;
+  border: 1px solid var(--ui-border);
+  border-left: none;
+  background: color-mix(in srgb, var(--ui-canvas) 82%, var(--ui-surface));
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: var(--ui-shadow-md);
+}
+
+.collapseToggle {
+  align-self: flex-end;
+  width: 2.25rem;
+  height: 2.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--ui-radius-md);
+  border: 1px solid var(--ui-border-strong);
+  background: color-mix(in srgb, var(--ui-surface) 55%, transparent);
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.collapseToggle:hover {
+  color: var(--ui-text);
+  border-color: color-mix(in srgb, var(--ui-accent) 35%, var(--ui-border-strong));
+}
+
+.railCollapsed .collapseToggle {
+  align-self: center;
+}
+
+.railBrand {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-space-sm);
+  padding: 0.35rem 0.5rem;
+  margin-bottom: var(--ui-space-sm);
+  border: none;
+  border-radius: var(--ui-radius-md);
+  background: transparent;
+  font: inherit;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  font-size: 1.05rem;
+  color: var(--ui-text);
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.2s ease;
+}
+
+.railBrand:hover {
+  background: color-mix(in srgb, var(--ui-surface) 55%, transparent);
+}
+
+.railCollapsed .railBrand {
+  justify-content: center;
+  padding: 0.35rem;
+}
+
+.brandIcon {
+  width: 1.35rem;
+  height: 1.35rem;
+  opacity: 0.85;
+}
+
+.railList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.railLink {
+  display: flex;
+  align-items: center;
+  gap: var(--ui-space-sm);
+  width: 100%;
+  padding: 0.5rem 0.55rem;
+  border: none;
+  border-radius: var(--ui-radius-md);
+  background: transparent;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ui-text-muted);
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.railLink:hover {
+  color: var(--ui-text);
+  background: color-mix(in srgb, var(--ui-surface) 55%, transparent);
+}
+
+.railLinkActive {
+  color: var(--ui-text);
+  background: color-mix(in srgb, var(--ui-surface) 88%, transparent);
+  box-shadow: inset 3px 0 0 0 color-mix(in srgb, var(--ui-accent) 75%, transparent);
+}
+
+.railIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex-shrink: 0;
+}
+
+.railLabel {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.railCollapsed .railLabel {
+  display: none;
+}

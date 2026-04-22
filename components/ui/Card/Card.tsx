@@ -1,7 +1,7 @@
 import { CSSProperties, ReactNode } from 'react';
 import styles from './Card.module.css';
 
-export type CardPadding = 'sm' | 'md' | 'lg';
+export type CardPadding = 'none' | 'sm' | 'md' | 'lg';
 export type CardVariant = 'elevated' | 'outline' | 'ghost' | 'gradientBorder';
 
 export interface CardProps {
@@ -16,6 +16,7 @@ export interface CardProps {
 }
 
 const padClass: Record<CardPadding, string> = {
+  none: styles.paddingNone,
   sm: styles.paddingSm,
   md: styles.paddingMd,
   lg: styles.paddingLg,

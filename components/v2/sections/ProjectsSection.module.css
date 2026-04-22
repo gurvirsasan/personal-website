@@ -1,0 +1,37 @@
+.intro {
+  max-width: 34rem;
+  margin-bottom: var(--ui-space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-sm);
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-xl);
+}
+
+.shelf {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-md);
+}
+
+@media (min-width: 960px) {
+  .layout {
+    flex-direction: row;
+    align-items: stretch;
+    gap: var(--ui-space-2xl);
+  }
+
+  .spotlight {
+    flex: 1.15;
+    min-width: 0;
+  }
+
+  .shelf {
+    flex: 0.85;
+    min-width: 0;
+  }
+}

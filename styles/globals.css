@@ -175,3 +175,17 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+/* v2 portfolio: smooth in-page navigation (class toggled from Portfolio) */
+html.v2-scroll {
+  scroll-behavior: smooth;
+  scroll-padding-top: 1rem;
+  scroll-padding-bottom: 5.5rem;
+}
+
+@media (min-width: 901px) {
+  html.v2-scroll {
+    scroll-padding-top: 1.25rem;
+    scroll-padding-bottom: 1.25rem;
+  }
+}
