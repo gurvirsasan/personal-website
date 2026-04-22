@@ -55,14 +55,24 @@
   transition: color 0.2s ease, background 0.2s ease, transform 0.15s ease;
 }
 
-.dockBtn:hover {
+.dockBtn:hover:not(.dockBtnActive) {
   color: var(--ui-text);
   background: color-mix(in srgb, var(--ui-surface) 65%, transparent);
 }
 
-.dockBtnActive {
-  color: var(--ui-text);
-  background: color-mix(in srgb, var(--ui-accent) 14%, var(--ui-surface));
+.dockBtnActive,
+.dockBtnActive:hover {
+  color: var(--ui-accent);
+  background: color-mix(in srgb, var(--ui-accent) 26%, var(--ui-surface));
+  box-shadow:
+    inset 0 0 0 1.5px color-mix(in srgb, var(--ui-accent) 55%, transparent),
+    0 1px 0 color-mix(in srgb, var(--ui-text) 6%, transparent);
+}
+
+:global([data-theme='dark']) .dockBtnActive,
+:global([data-theme='dark']) .dockBtnActive:hover {
+  background: color-mix(in srgb, var(--ui-accent) 22%, var(--ui-surface));
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--ui-accent) 48%, transparent);
 }
 
 .dockIcon {
@@ -92,7 +102,7 @@
 }
 
 .railCollapsed {
-  width: 4.75rem;
+  width: 3.85rem;
 }
 
 @media (max-width: 900px) {
@@ -116,8 +126,30 @@
   box-shadow: var(--ui-shadow-md);
 }
 
+.railHeader {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  margin-bottom: var(--ui-space-xs);
+}
+
+.railCollapsed .railHeader {
+  justify-content: center;
+  margin-bottom: 0.1rem;
+}
+
+.railCollapsed .railInner {
+  padding: var(--ui-space-sm) 0.35rem;
+  gap: var(--ui-space-xs);
+}
+
+.railCollapsed .collapseToggle {
+  width: 2rem;
+  height: 2rem;
+}
+
 .collapseToggle {
-  align-self: flex-end;
   width: 2.25rem;
   height: 2.25rem;
   display: flex;
@@ -136,42 +168,9 @@
   border-color: color-mix(in srgb, var(--ui-accent) 35%, var(--ui-border-strong));
 }
 
-.railCollapsed .collapseToggle {
-  align-self: center;
-}
-
-.railBrand {
-  display: flex;
-  align-items: center;
-  gap: var(--ui-space-sm);
-  padding: 0.35rem 0.5rem;
-  margin-bottom: var(--ui-space-sm);
-  border: none;
-  border-radius: var(--ui-radius-md);
-  background: transparent;
-  font: inherit;
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  font-size: 1.05rem;
-  color: var(--ui-text);
-  cursor: pointer;
-  text-align: left;
-  transition: background 0.2s ease;
-}
-
-.railBrand:hover {
-  background: color-mix(in srgb, var(--ui-surface) 55%, transparent);
-}
-
-.railCollapsed .railBrand {
-  justify-content: center;
-  padding: 0.35rem;
-}
-
-.brandIcon {
-  width: 1.35rem;
-  height: 1.35rem;
-  opacity: 0.85;
+.collapseToggle svg {
+  width: 1.15rem;
+  height: 1.15rem;
 }
 
 .railList {
@@ -186,6 +185,7 @@
 }
 
 .railLink {
+  position: relative;
   display: flex;
   align-items: center;
   gap: var(--ui-space-sm);
@@ -200,18 +200,43 @@
   color: var(--ui-text-muted);
   cursor: pointer;
   text-align: left;
-  transition: color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
-.railLink:hover {
+.railLink:hover:not(.railLinkActive) {
   color: var(--ui-text);
   background: color-mix(in srgb, var(--ui-surface) 55%, transparent);
 }
 
 .railLinkActive {
   color: var(--ui-text);
-  background: color-mix(in srgb, var(--ui-surface) 88%, transparent);
-  box-shadow: inset 3px 0 0 0 color-mix(in srgb, var(--ui-accent) 75%, transparent);
+  background: color-mix(in srgb, var(--ui-accent) 12%, var(--ui-surface));
+}
+
+/* Short bar inset from the row edge — reads clearly with border-radius (inset box-shadow did not). */
+.railLinkActive::before {
+  content: '';
+  position: absolute;
+  left: 0.35rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 1.35rem;
+  border-radius: var(--ui-radius-pill);
+  background: var(--ui-accent);
+}
+
+.railCollapsed .railLinkActive {
+  background: color-mix(in srgb, var(--ui-accent) 22%, var(--ui-surface));
+  box-shadow: inset 0 0 0 1.5px color-mix(in srgb, var(--ui-accent) 45%, transparent);
+}
+
+.railCollapsed .railLinkActive::before {
+  display: none;
+}
+
+.railLinkActive .railIcon {
+  color: var(--ui-accent);
 }
 
 .railIcon {
@@ -228,4 +253,14 @@
 
 .railCollapsed .railLabel {
   display: none;
+}
+
+.railCollapsed .railList {
+  gap: var(--ui-space-xs);
+}
+
+.railCollapsed .railLink {
+  justify-content: center;
+  padding: 0.6rem 0.25rem;
+  min-height: 2.35rem;
 }

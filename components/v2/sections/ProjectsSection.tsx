@@ -8,7 +8,7 @@ const PROJECTS = [
   {
     title: 'CallGPT',
     description: 'Voice-based AI assistant powered by GPT-4 — natural conversations and task help.',
-    imageUrl: '/callgpt.png',
+    imageUrl: '/callgpt-cover.png',
     projectUrl: 'https://devpost.com/software/callgpt',
     tags: ['DeerHacks winner', 'Python', 'OpenAI', 'Speech', 'SQLite'],
   },
@@ -36,8 +36,6 @@ const PROJECTS = [
 ];
 
 export default function ProjectsSection() {
-  const [first, ...rest] = PROJECTS;
-
   return (
     <Section id="projects">
       <header className={styles.intro}>
@@ -45,19 +43,14 @@ export default function ProjectsSection() {
           Projects
         </Heading>
         <Text variant="muted" balance>
-          One flagship build up top, then a tighter shelf of experiments and product work.
+          Projects that started from the basics, snowballed my learning, and shaped how I build real products.
         </Text>
       </header>
 
       <div className={styles.layout}>
-        <div className={styles.spotlight}>
-          <ProjectCard {...first} featured />
-        </div>
-        <div className={styles.shelf}>
-          {rest.map((p) => (
-            <ProjectCard key={p.title} {...p} />
-          ))}
-        </div>
+        {PROJECTS.map((p) => (
+          <ProjectCard key={p.title} {...p} />
+        ))}
       </div>
     </Section>
   );

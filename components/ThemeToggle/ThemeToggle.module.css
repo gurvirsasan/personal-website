@@ -32,10 +32,11 @@
   color: rgb(var(--text-primary));
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .themeToggle {
-    bottom: 1rem;
-    right: 1rem;
+    top: max(1rem, env(safe-area-inset-top, 0px));
+    right: max(1rem, env(safe-area-inset-right, 0px));
+    bottom: auto;
     width: 44px;
     height: 44px;
   }

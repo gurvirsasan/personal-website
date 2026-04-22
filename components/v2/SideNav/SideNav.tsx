@@ -1,5 +1,6 @@
 import type { IconType } from 'react-icons';
-import { HiChevronDoubleLeft, HiChevronDoubleRight, HiSparkles } from 'react-icons/hi2';
+import { HiBars3 } from 'react-icons/hi2';
+import { scrollToSectionById } from '../scroll/scrollToSection';
 import styles from './SideNav.module.css';
 
 export interface NavItem {
@@ -17,10 +18,6 @@ interface SideNavProps {
 }
 
 export default function SideNav({ items, activeId, pastHero, collapsed, onToggleCollapse }: SideNavProps) {
-  const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
-
   return (
     <>
       {/* Mobile: glass dock after first scroll */}
@@ -28,14 +25,16 @@ export default function SideNav({ items, activeId, pastHero, collapsed, onToggle
         <ul className={styles.mobileDockList}>
           {items.map((item) => {
             const Icon = item.Icon;
+            const isActive = activeId === item.id;
             return (
               <li key={item.id}>
                 <button
                   type="button"
-                  className={`${styles.dockBtn} ${activeId === item.id ? styles.dockBtnActive : ''}`.trim()}
-                  onClick={() => scrollTo(item.id)}
+                  className={`${styles.dockBtn} ${isActive ? styles.dockBtnActive : ''}`.trim()}
+                  onClick={() => scrollToSectionById(item.id)}
                   aria-label={item.label}
                   title={item.label}
+                  aria-current={isActive ? 'true' : undefined}
                 >
                   <Icon className={styles.dockIcon} aria-hidden />
                 </button>
@@ -51,31 +50,31 @@ export default function SideNav({ items, activeId, pastHero, collapsed, onToggle
         aria-hidden={!pastHero}
       >
         <div className={styles.railInner}>
-          <button
-            type="button"
-            className={styles.collapseToggle}
-            onClick={onToggleCollapse}
-            aria-label={collapsed ? 'Expand navigation' : 'Collapse navigation'}
-            title={collapsed ? 'Expand' : 'Tuck away'}
-          >
-            {collapsed ? <HiChevronDoubleRight aria-hidden /> : <HiChevronDoubleLeft aria-hidden />}
-          </button>
-
-          <button type="button" className={styles.railBrand} onClick={() => scrollTo('home')} aria-label="Home">
-            <HiSparkles className={styles.brandIcon} aria-hidden />
-            {!collapsed && <span>Gurvir</span>}
-          </button>
+          <div className={styles.railHeader}>
+            <button
+              type="button"
+              className={styles.collapseToggle}
+              onClick={onToggleCollapse}
+              aria-label={collapsed ? 'Expand navigation' : 'Collapse navigation'}
+              title={collapsed ? 'Expand labels' : 'Hide labels'}
+            >
+              <HiBars3 aria-hidden />
+            </button>
+          </div>
 
           <ul className={styles.railList}>
             {items.map((item) => {
               const Icon = item.Icon;
+              const isActive = activeId === item.id;
               return (
                 <li key={item.id}>
                   <button
                     type="button"
-                    className={`${styles.railLink} ${activeId === item.id ? styles.railLinkActive : ''}`.trim()}
-                    onClick={() => scrollTo(item.id)}
+                    className={`${styles.railLink} ${isActive ? styles.railLinkActive : ''}`.trim()}
+                    onClick={() => scrollToSectionById(item.id)}
                     title={item.label}
+                    aria-label={item.label}
+                    aria-current={isActive ? 'true' : undefined}
                   >
                     <Icon className={styles.railIcon} aria-hidden />
                     {!collapsed && <span className={styles.railLabel}>{item.label}</span>}

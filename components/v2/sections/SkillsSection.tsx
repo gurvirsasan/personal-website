@@ -1,4 +1,5 @@
 import Section from '../Section';
+import SurfaceLift from '../../ui/SurfaceLift';
 import Heading from '../../ui/Heading';
 import Text from '../../ui/Text';
 import Card from '../../ui/Card';
@@ -17,8 +18,6 @@ import {
   SiNodedotjs,
   SiFramework,
   SiRedux,
-  SiNextdotjs,
-  SiJquery,
   SiExpress,
   SiJest,
   SiGit,
@@ -31,35 +30,41 @@ import { FaJava, FaTerminal, FaDatabase } from 'react-icons/fa';
 import styles from './SkillsSection.module.css';
 
 const languages = [
-  { name: 'TypeScript', icon: SiTypescript },
+  { name: 'TypeScript (ES6)', icon: SiTypescript },
   { name: 'Python', icon: SiPython },
+  { name: 'Scala', icon: SiScala },
   { name: 'Java', icon: FaJava },
   { name: 'Kotlin', icon: SiKotlin },
   { name: 'C', icon: SiC },
-  { name: 'Scala', icon: SiScala },
-  { name: 'HTML/CSS', icon: SiHtml5 },
   { name: 'Bash', icon: FaTerminal },
-  { name: 'PostgreSQL', icon: SiPostgresql },
-  { name: 'SQLite', icon: SiSqlite },
+  { name: 'SQL', icon: FaDatabase },
+  { name: 'HTML/CSS', icon: SiHtml5 },
 ];
 
 const technologies = [
   { name: 'React', icon: SiReact },
-  { name: 'Angular', icon: SiAngular },
   { name: 'React Native', icon: SiReactrouter },
-  { name: 'Node', icon: SiNodedotjs },
-  { name: 'Play', icon: SiFramework },
+  { name: 'Angular', icon: SiAngular },
   { name: 'Redux', icon: SiRedux },
-  { name: 'Next', icon: SiNextdotjs },
-  { name: 'AWS', icon: SiAmazon },
+  { name: 'RTK Query', icon: SiRedux },
+  { name: 'Node', icon: SiNodedotjs },
   { name: 'Express', icon: SiExpress },
-  { name: 'Jest', icon: SiJest },
+  { name: 'Play Framework', icon: SiFramework },
+  { name: 'AWS', icon: SiAmazon },
+  { name: 'Kafka', icon: FaDatabase },
+  { name: 'Redis', icon: FaDatabase },
+  { name: 'Webhooks', icon: FaDatabase },
+  { name: 'Datadog', icon: FaDatabase },
+  { name: 'PostgreSQL', icon: SiPostgresql },
+  { name: 'Django', icon: FaDatabase },
+  { name: 'SQLite', icon: SiSqlite },
+  { name: 'ESRI', icon: FaDatabase },
+  { name: 'Docker', icon: SiDocker },
   { name: 'Git', icon: SiGit },
+  { name: 'Jest', icon: SiJest },
   { name: 'Jira', icon: SiJira },
   { name: 'Postman', icon: SiPostman },
-  { name: 'Docker', icon: SiDocker },
-  { name: 'Plaid', icon: FaDatabase },
-  { name: 'JQuery', icon: SiJquery },
+  { name: 'Bruno', icon: FaDatabase },
 ];
 
 export default function SkillsSection() {
@@ -77,7 +82,7 @@ export default function SkillsSection() {
       <div className={styles.stage}>
         <div className={styles.glow} aria-hidden />
 
-        <Card variant="gradientBorder" padding="lg" className={styles.panel}>
+        <Card variant="gradientBorder" padding="lg" interactive className={styles.panel}>
           <div className={styles.split}>
             <div className={styles.railCol}>
               <p className={styles.kicker}>Languages</p>
@@ -97,12 +102,12 @@ export default function SkillsSection() {
               <p className={styles.kicker}>Technologies</p>
               <div className={styles.field}>
                 {technologies.map(({ name, icon: Icon }) => (
-                  <div key={name} className={styles.orb}>
+                  <SurfaceLift key={name} variant="compact" className={styles.orb}>
                     <span className={styles.orbIcon} aria-hidden>
                       <Icon />
                     </span>
                     <span className={styles.orbLabel}>{name}</span>
-                  </div>
+                  </SurfaceLift>
                 ))}
               </div>
             </div>

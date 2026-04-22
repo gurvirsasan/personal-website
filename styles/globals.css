@@ -183,6 +183,12 @@ html.v2-scroll {
   scroll-padding-bottom: 5.5rem;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html.v2-scroll {
+    scroll-behavior: auto;
+  }
+}
+
 @media (min-width: 901px) {
   html.v2-scroll {
     scroll-padding-top: 1.25rem;

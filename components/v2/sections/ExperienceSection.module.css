@@ -19,68 +19,90 @@
   flex-shrink: 0;
 }
 
-.scroller {
-  margin-inline: calc(-1 * var(--ui-gutter-x));
-  padding-inline: var(--ui-gutter-x);
-}
-
-.strip {
+.list {
   list-style: none;
   margin: 0;
-  padding: var(--ui-space-sm) 0 var(--ui-space-md);
+  padding: 0;
   display: flex;
+  flex-direction: column;
   gap: var(--ui-space-md);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  mask-image: linear-gradient(90deg, transparent, #000 2%, #000 98%, transparent);
 }
 
-.slide {
-  flex: 0 0 min(78vw, 17rem);
-  scroll-snap-align: center;
-}
-
-@media (min-width: 720px) {
-  .slide {
-    flex-basis: 15.5rem;
-    scroll-snap-align: start;
-  }
+.item {
+  min-width: 0;
 }
 
 .card {
-  height: 100%;
-  min-height: 13.5rem;
   padding: var(--ui-space-lg);
   border-radius: var(--ui-radius-lg);
   border: 1px solid var(--ui-border);
-  background: linear-gradient(
+  background-color: var(--ui-surface);
+  background-image: linear-gradient(
     165deg,
     color-mix(in srgb, var(--ui-surface) 95%, var(--ui-accent)),
     color-mix(in srgb, var(--ui-surface) 100%, transparent)
   );
+  background-repeat: no-repeat;
   box-shadow: var(--ui-shadow-xs);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.22s ease,
+    background-image 0.22s ease,
+    background-color 0.24s ease;
+}
+
+/* Gradient ring + lift shadow (overrides SurfaceLift hover shadow on this surface). */
+@media (hover: hover) and (pointer: fine) {
+  .card[data-experience-card]:hover {
+    border-color: transparent;
+    background-color: transparent;
+    background-image:
+      linear-gradient(
+        150deg,
+        color-mix(in srgb, var(--ui-surface) 90%, var(--ui-accent-cyan) 10%),
+        color-mix(in srgb, var(--ui-surface) 86%, var(--ui-accent-fuchsia) 14%)
+      ),
+      var(--ui-gradient-vibrant);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-repeat: no-repeat;
+    box-shadow: 0 10px 28px color-mix(in srgb, var(--ui-text) 14%, transparent);
+  }
+}
+
+@media (hover: none) {
+  .card[data-experience-card]:active {
+    border-color: transparent;
+    background-color: transparent;
+    background-image:
+      linear-gradient(
+        150deg,
+        color-mix(in srgb, var(--ui-surface) 92%, var(--ui-accent-cyan) 8%),
+        color-mix(in srgb, var(--ui-surface) 90%, var(--ui-accent-fuchsia) 10%)
+      ),
+      var(--ui-gradient-vibrant);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    background-repeat: no-repeat;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+}
+
+.cardInner {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-start;
-  gap: var(--ui-space-sm);
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px) scale(1.01);
-  box-shadow: var(--ui-shadow-sm);
-}
-
-.year {
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  color: var(--ui-text-muted);
+  gap: var(--ui-space-md);
+  min-width: 0;
 }
 
 .logoPlate {
-  margin-top: auto;
+  flex-shrink: 0;
 }
 
 .logo {
@@ -90,17 +112,36 @@
   width: auto;
 }
 
-.company {
+/* Wide U of T wordmark: crop to the coat-of-arms side (Education keeps the full mark with contain). */
+.logoUoftCrest {
+  width: 3rem;
+  height: 3rem;
+  max-height: none;
+  object-fit: cover;
+  object-position: left center;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--ui-space-2xs);
+}
+
+.title {
   margin: 0;
   font-size: 1.05rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.2;
+  color: var(--ui-text);
 }
 
-.role {
+.company {
   margin: 0;
   font-size: 0.88rem;
+  font-weight: 600;
   color: var(--ui-text-muted);
   line-height: 1.35;
 }
@@ -109,4 +150,25 @@
   margin: 0;
   font-size: 0.78rem;
   color: var(--ui-text-muted);
+  line-height: 1.45;
+}
+
+.whenSep {
+  color: var(--ui-text-muted);
+  opacity: 0.55;
+}
+
+.tenure {
+  font-weight: 600;
+  color: var(--ui-text-muted);
+}
+
+@media (max-width: 639px) {
+  .card {
+    padding: var(--ui-space-md);
+  }
+
+  .cardInner {
+    gap: var(--ui-space-sm);
+  }
 }

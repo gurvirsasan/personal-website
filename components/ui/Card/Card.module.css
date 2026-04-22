@@ -23,11 +23,6 @@
   box-shadow: var(--ui-shadow-sm);
 }
 
-.interactive:hover {
-  box-shadow: var(--ui-shadow-md);
-  transform: translateY(-3px);
-}
-
 .outline {
   box-shadow: none;
 }

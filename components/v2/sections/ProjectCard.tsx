@@ -17,7 +17,7 @@ export interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, imageUrl, projectUrl, tags, featured = false }: ProjectCardProps) {
   return (
-    <Card variant="elevated" padding="none" className={`${styles.root} ${featured ? styles.featured : ''}`.trim()}>
+    <Card variant="elevated" padding="none" interactive className={`${styles.root} ${featured ? styles.featured : ''}`.trim()}>
       <div className={styles.imageWrap}>
         <Image src={imageUrl} alt={title} width={960} height={540} className={styles.image} />
         <a href={projectUrl} target="_blank" rel="noopener noreferrer" className={styles.link} aria-label={`Open ${title}`}>

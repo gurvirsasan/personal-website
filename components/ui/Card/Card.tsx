@@ -1,4 +1,5 @@
 import { CSSProperties, ReactNode } from 'react';
+import lift from '../SurfaceLift/SurfaceLift.module.css';
 import styles from './Card.module.css';
 
 export type CardPadding = 'none' | 'sm' | 'md' | 'lg';
@@ -8,7 +9,7 @@ export interface CardProps {
   children: ReactNode;
   variant?: CardVariant;
   padding?: CardPadding;
-  /** Subtle lift on hover (elevated / gradient border) */
+  /** Subtle hover lift (see SurfaceLift — fine pointer only, reduced motion aware) */
   interactive?: boolean;
   className?: string;
   style?: CSSProperties;
@@ -38,13 +39,13 @@ export default function Card({
   style,
   as: Tag = 'div',
 }: CardProps) {
-  const interactiveClass =
-    interactive && (variant === 'elevated' || variant === 'gradientBorder') ? styles.interactive : '';
+  const interactiveLift =
+    interactive && variant !== 'ghost' ? lift.root : '';
 
   if (variant === 'gradientBorder') {
     return (
       <Tag
-        className={`${styles.root} ${styles.gradientBorder} ${interactiveClass} ${className}`.trim()}
+        className={`${styles.root} ${styles.gradientBorder} ${interactiveLift} ${className}`.trim()}
         style={style}
       >
         <div className={`${styles.gradientInner} ${padClass[padding]}`}>{children}</div>
@@ -54,7 +55,7 @@ export default function Card({
 
   return (
     <Tag
-      className={`${styles.root} ${padClass[padding]} ${variantClass[variant]} ${interactiveClass} ${className}`.trim()}
+      className={`${styles.root} ${padClass[padding]} ${variantClass[variant]} ${interactiveLift} ${className}`.trim()}
       style={style}
     >
       {children}

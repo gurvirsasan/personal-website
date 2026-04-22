@@ -10,24 +10,17 @@
   background: rgb(var(--background-rgb));
 }
 
-@media (max-width: 900px) {
+/**
+ * Reserve desktop rail width from first paint so main column width does not jump
+ * when `pastHero` toggles (rail stays off-canvas until then via SideNav CSS).
+ */
+@media (min-width: 901px) {
   .root {
-    --v2-nav-offset: 1rem;
+    --nav-rail: 15rem;
   }
-}
 
-.root[data-past-hero='true'] {
-  --nav-rail: 15rem;
-}
-
-.root[data-past-hero='true'][data-nav-collapsed='true'] {
-  --nav-rail: 5.5rem;
-}
-
-@media (max-width: 900px) {
-  .root[data-past-hero='true'],
-  .root[data-past-hero='true'][data-nav-collapsed='true'] {
-    --nav-rail: 0px;
+  .root[data-nav-collapsed='true'] {
+    --nav-rail: 5.5rem;
   }
 }
 
@@ -150,7 +143,7 @@
 
 .mainInner {
   width: 100%;
-  max-width: min(58rem, 100%);
+  max-width: min(48rem, 100%);
   margin-inline: auto;
   padding-inline: var(--ui-gutter-x);
   padding-top: var(--ui-space-2xl);
@@ -161,6 +154,13 @@
 
 @media (min-width: 901px) {
   .mainInner {
-    max-width: min(54rem, calc(100vw - var(--nav-rail) - 2.5rem));
+    max-width: min(48rem, calc(100vw - var(--nav-rail) - 2.5rem));
   }
+}
+
+/** Mount point for createPortal overlays (must stay inside .root.theme-scope for tokens). */
+.portalRoot {
+  position: relative;
+  z-index: 2000;
+  pointer-events: none;
 }

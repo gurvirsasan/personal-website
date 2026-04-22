@@ -46,14 +46,15 @@
 
 .primary {
   color: #fafafa;
-  background: var(--ui-accent);
-  border-color: color-mix(in srgb, var(--ui-accent) 55%, transparent);
+  text-shadow: 0 1px 2px rgb(15 23 42 / 0.32);
+  background: var(--ui-gradient-vibrant);
+  border-color: rgb(255 255 255 / 0.22);
   box-shadow: var(--ui-shadow-xs);
 }
 
 .primary:hover:not(:disabled) {
   transform: translateY(-1px);
-  filter: brightness(1.06);
+  filter: brightness(1.05) saturate(1.06);
   box-shadow: var(--ui-shadow-sm);
 }
 

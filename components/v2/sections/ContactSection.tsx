@@ -4,6 +4,7 @@ import Heading from '../../ui/Heading';
 import Text from '../../ui/Text';
 import Button from '../../ui/Button';
 import Card from '../../ui/Card';
+import ResumeDownloadButton from '../ResumeDownloadButton';
 import styles from './ContactSection.module.css';
 
 export default function ContactSection() {
@@ -22,7 +23,7 @@ export default function ContactSection() {
 
         <div className={styles.cardWrap}>
           <div className={styles.aura} aria-hidden />
-          <Card variant="elevated" padding="lg" className={styles.card}>
+          <Card variant="elevated" padding="lg" interactive className={styles.card}>
             <p className={styles.cardLead}>Fastest paths</p>
             <div className={styles.actions}>
               <Button href="mailto:gurvirsasan1@gmail.com" variant="primary" leftSlot={<FaEnvelope aria-hidden />} className={styles.actionBtn}>
@@ -34,6 +35,7 @@ export default function ContactSection() {
               <Button href="https://www.github.com/gurvirsasan" variant="secondary" leftSlot={<FaGithub aria-hidden />} className={styles.actionBtn}>
                 GitHub
               </Button>
+              <ResumeDownloadButton className={styles.actionBtn} />
             </div>
           </Card>
         </div>

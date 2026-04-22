@@ -2,7 +2,7 @@ import Head from 'next/head';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { HiAcademicCap, HiBriefcase, HiCpuChip, HiEnvelope, HiHome, HiRectangleStack } from 'react-icons/hi2';
 import ThemeToggle, { type ThemeChoice } from '../ThemeToggle/ThemeToggle';
-import { useActiveSection } from './hooks/useActiveSection';
+import { usePortfolioScrollSync } from './hooks/usePortfolioScrollSync';
 import SideNav, { type NavItem } from './SideNav/SideNav';
 import HeroLanding from './HeroLanding';
 import AboutSection from './sections/AboutSection';
@@ -43,11 +43,10 @@ function readNavCollapsed(): boolean {
 
 export default function Portfolio() {
   const [theme, setTheme] = useState<ThemeChoice>('light');
-  const [pastHero, setPastHero] = useState(false);
   const [navCollapsed, setNavCollapsed] = useState(false);
 
   const sectionIds = useMemo(() => NAV_ITEMS.map((i) => i.id), []);
-  const activeId = useActiveSection(sectionIds);
+  const { activeId, pastHero } = usePortfolioScrollSync(sectionIds);
 
   useLayoutEffect(() => {
     setTheme(readStoredTheme() ?? systemTheme());
@@ -65,16 +64,6 @@ export default function Portfolio() {
   useEffect(() => {
     document.documentElement.classList.add('v2-scroll');
     return () => document.documentElement.classList.remove('v2-scroll');
-  }, []);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const threshold = window.innerHeight * 0.22;
-      setPastHero(window.scrollY > threshold);
-    };
-    onScroll();
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
   const onThemeChange = useCallback((next: ThemeChoice) => {
@@ -124,6 +113,9 @@ export default function Portfolio() {
           <ContactSection />
         </div>
       </main>
+
+      {/* In-tree portal target so overlays keep .theme-scope tokens (nav offset, colors) */}
+      <div id="portfolio-portal-root" className={shell.portalRoot} />
     </div>
   );
 }

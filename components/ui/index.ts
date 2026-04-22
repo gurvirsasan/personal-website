@@ -34,6 +34,9 @@ export type { SectionProps } from './Section';
 export { default as Stack } from './Stack';
 export type { StackProps, UiGap } from './Stack';
 
+export { default as SurfaceLift } from './SurfaceLift';
+export type { SurfaceLiftProps, SurfaceLiftVariant } from './SurfaceLift';
+
 export { default as Text } from './Text';
 export type { TextProps, TextVariant } from './Text';
 
