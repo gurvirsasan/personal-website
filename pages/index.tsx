@@ -10,7 +10,7 @@ import DownloadButton from '../components/DownloadButton/DownloadButton';
 import Portfolio from '../components/v2/Portfolio';
 
 export default function Home() {
-  const showNewSite = process.env.NEXT_PUBLIC_SHOW_NEW_SITE === 'true';
+  const showNewSite = process.env.NEXT_PUBLIC_SHOW_OLD_SITE === 'true';
 
   return <>{showNewSite ? <NewSite /> : <OldSite />}</>;
 }
