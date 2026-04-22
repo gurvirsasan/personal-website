@@ -12,7 +12,7 @@ import Portfolio from '../components/v2/Portfolio';
 export default function Home() {
   const showOldSite = process.env.NEXT_PUBLIC_SHOW_OLD_SITE === 'true';
 
-  return <>{showOldSite ? <NewSite /> : <OldSite />}</>;
+  return <>{!showOldSite ? <NewSite /> : <OldSite />}</>;
 }
 
 const NewSite = () => {
