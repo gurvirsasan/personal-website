@@ -148,6 +148,7 @@ body {
   background: rgb(var(--background-rgb));
   min-height: 100vh;
   width: 100%;
+  overflow-x: hidden;
   position: relative;
 }
 

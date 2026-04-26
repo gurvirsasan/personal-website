@@ -4,6 +4,10 @@
  * programmatic navigation follows that one source of truth (avoids nested smooth).
  */
 export function scrollToSectionById(id: string): void {
-  if (typeof document === 'undefined') return;
-  document.getElementById(id)?.scrollIntoView({ block: 'start', inline: 'nearest', behavior: 'auto' });
+  if (typeof document === 'undefined' || typeof window === 'undefined') return;
+  const el = document.getElementById(id);
+  if (!el) return;
+
+  const y = el.getBoundingClientRect().top + window.scrollY;
+  window.scrollTo({ top: y, left: 0, behavior: 'auto' });
 }
