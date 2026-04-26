@@ -40,6 +40,12 @@
   position: relative;
 }
 
+@media (max-width: 639px) {
+  .panel > div {
+    padding: var(--ui-space-md);
+  }
+}
+
 .split {
   display: flex;
   flex-direction: column;
@@ -121,6 +127,51 @@
   letter-spacing: -0.01em;
 }
 
+@media (max-width: 639px) {
+  .split {
+    gap: var(--ui-space-lg);
+  }
+
+  .kicker {
+    margin-bottom: var(--ui-space-sm);
+  }
+
+  .rail {
+    padding: 0;
+    border-left: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--ui-space-xs);
+  }
+
+  .railItem {
+    min-width: 0;
+    padding: var(--ui-space-xs);
+    border-radius: var(--ui-radius-md);
+    background: color-mix(in srgb, var(--ui-accent) 8%, var(--ui-surface));
+    border: 1px solid color-mix(in srgb, var(--ui-accent) 18%, var(--ui-border));
+    gap: var(--ui-space-xs);
+  }
+
+  .railIcon {
+    width: 1.8rem;
+    height: 1.8rem;
+    border-radius: var(--ui-radius-sm);
+  }
+
+  .railIcon svg {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .railName {
+    min-width: 0;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+}
+
 .field {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 6.5rem), 1fr));
@@ -164,6 +215,28 @@
   line-height: 1.2;
   color: var(--ui-text);
   overflow-wrap: anywhere;
+}
+
+@media (max-width: 639px) {
+  .field {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--ui-space-xs);
+  }
+
+  .orb {
+    padding: var(--ui-space-sm) var(--ui-space-xs);
+    border-radius: var(--ui-radius-md);
+    gap: var(--ui-space-2xs);
+  }
+
+  .orbIcon svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .orbLabel {
+    font-size: 0.72rem;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
